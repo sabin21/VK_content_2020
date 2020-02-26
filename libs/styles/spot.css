@@ -1,0 +1,224 @@
+.spot-wrap {
+  position: relative;
+  height: 800vh;
+}
+
+.spot-wrap .trigger {
+  position: absolute;
+  display: block;
+  height: 1px;
+  width: 100px;
+  right: 0;
+  background: red;
+}
+
+.spot-wrap #trigger-0 {
+  top: 50vh;
+}
+
+.spot-wrap #trigger-1 {
+  top: 60vh;
+}
+
+.spot-wrap #trigger-2 {
+  top: 100vh;
+}
+
+.spot-wrap #trigger-3 {
+  top: 150vh;
+}
+
+.spot-wrap #trigger-4 {
+  top: 200vh;
+}
+
+.spot-wrap #trigger-5 {
+  top: 300vh;
+}
+
+.slide {
+  width: 100%;
+  height: 100vh;
+}
+
+.slide#slide-hero {
+  background-color: #3ACEE3;
+  height: 100vh;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+
+.slide#slide-hero.active {
+  background-color: #ED43C8;
+}
+
+.slide#slide-hero .title-wrap {
+  width: 612px;
+  height: 413px;
+  position: absolute;
+  background-image: url("../../img/spot/hero_title.png");
+  background-size: cover;
+  left: calc(50% - ( 612px / 2 ));
+  -webkit-animation: HeroTitle1 0.6s both;
+          animation: HeroTitle1 0.6s both;
+  z-index: 5;
+}
+
+.slide#slide-hero .object-1, .slide#slide-hero .object-2 {
+  position: absolute;
+}
+
+.slide#slide-hero .object-1 img, .slide#slide-hero .object-2 img {
+  width: 100%;
+}
+
+.slide#slide-hero .object-1 {
+  width: 321px;
+  height: 434px;
+  top: 32vh;
+  left: -30%;
+  z-index: 10;
+}
+
+.slide#slide-hero .object-2 {
+  width: 197px;
+  height: 456px;
+  top: 29vh;
+  right: 25%;
+  z-index: 1;
+  -webkit-animation: HeroObject2 1s both;
+          animation: HeroObject2 1s both;
+}
+
+@-webkit-keyframes HeroTitle1 {
+  0% {
+    top: -50vh;
+  }
+  100% {
+    top: 18vh;
+  }
+}
+
+@keyframes HeroTitle1 {
+  0% {
+    top: -50vh;
+  }
+  100% {
+    top: 18vh;
+  }
+}
+
+@-webkit-keyframes HeroObject1 {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 15%;
+  }
+}
+
+@keyframes HeroObject1 {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 15%;
+  }
+}
+
+@-webkit-keyframes HeroObject2 {
+  0% {
+    right: -50%;
+  }
+  100% {
+    right: 20%;
+  }
+}
+
+@keyframes HeroObject2 {
+  0% {
+    right: -50%;
+  }
+  100% {
+    right: 20%;
+  }
+}
+
+.slide#slide-2 {
+  position: absolute;
+  top: 100vh;
+  background-image: url("../../img/spot/cafe_1_1.png");
+  background-size: cover;
+}
+
+.slide#slide-2 .overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.85;
+}
+
+.slide#slide-2.pin {
+  position: fixed;
+}
+
+.slide#slide-2 .map-wrap {
+  position: absolute;
+  width: 652px;
+  height: 482px;
+  left: -660px;
+  top: 20vh;
+  background-size: cover;
+  background-image: url("../../img/spot/seoul_map.png");
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+
+.slide#slide-2 .map-wrap.active {
+  left: 10vw;
+}
+
+.slide#slide-2 .map-wrap .marker {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #FF4848;
+  border: 8px solid #fff;
+  -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.slide#slide-2 .map-wrap .marker#marker1 {
+  top: 200px;
+  right: 210px;
+}
+
+.slide#slide-2 .map-wrap .marker#marker2 {
+  top: 260px;
+  right: 300px;
+}
+
+.slide#slide-2 .des-wrap {
+  position: absolute;
+  width: 360px;
+  top: 20vh;
+  right: calc(50% - 500px);
+  color: #fff;
+}
+
+.slide#slide-2 .des-wrap h2 {
+  font-size: 3vw;
+  line-height: 1em;
+}
+
+.slide#slide-2 .des-wrap p {
+  margin-top: 1rem;
+  line-height: 1.5em;
+}
+/*# sourceMappingURL=spot.css.map */

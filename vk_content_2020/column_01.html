@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Prototype-2020</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../libs/scss/common.css" />
+    <link rel="stylesheet" type="text/css" href="./css/column_base.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="vk-header"></div>
+        <div class="container vk-body left-menu1">
+            <div class="body-column">
+                <div class="header column"></div>
+
+                <div class="page-opener">                  
+                    
+                    <h1>Full Size Viewer</h1>
+                </div>
+                <div class="cover"></div>
+            </div>
+        </div>
+
+        
+       
+    </div>
+    <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../libs/gsap/TweenMax.min.js"></script>
+    <script>
+        var opener = $('.page-opener');
+        var windowWidth = $(window).width();
+
+
+        var tlOpen = new TimelineMax({paused:true});
+
+        
+        tlOpen.to(opener, 0.5, {width: windowWidth});
+        opener.on('click', function(){
+            tlOpen.play();
+        });
+        function setCoverPosition(cardPosition) {
+            // style the cover so it is in exactly the same position as the card
+            cover.style.left = cardPosition.left + 'px';
+            cover.style.top = cardPosition.top + 'px';
+            cover.style.width = cardPosition.width + 'px';
+            cover.style.height = cardPosition.height + 'px';
+        }
+    
+    </script>
+</body>
+</html>

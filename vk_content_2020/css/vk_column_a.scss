@@ -1,0 +1,15 @@
+
+.content-wrap{
+    width:100%;
+    .sec-1, .sec-2, .sec-3, .sec-4, .sec-5{
+        position: relative; width: 100%; min-height: 100vh;
+        display:flex;
+        .back-wrap {
+            width: 100%; height: 100vh;
+            background-size:cover; background-position: center;
+        }
+    }
+    .sec-1 {
+        background-color:#000;        
+    }
+}

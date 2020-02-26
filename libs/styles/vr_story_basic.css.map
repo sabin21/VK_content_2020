@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,eAAe,CAAA;EACX,KAAK,EAAC,IAAI;EAAE,MAAM,EAAE,KAAK;EAAE,QAAQ,EAAE,MAAM;CAC9C;;AACD,AAAA,OAAO,CAAC;EACJ,KAAK,EAAE,IAAI;EAAE,MAAM,EAAE,KAAK;EAAE,QAAQ,EAAE,MAAM;CAC/C",
+    "sources": [
+        "vr_story_basic.scss"
+    ],
+    "names": [],
+    "file": "vr_story_basic.css"
+}

@@ -1,0 +1,82 @@
+.map-wrap {
+  width: 100%;
+  height: auto;
+}
+
+.map-main {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 840px;
+  overflow: hidden;
+  max-width: 1600px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.map-main .info-box {
+  width: 440px;
+  height: 100%;
+  background-color: #fff;
+}
+
+.map-main .info-box .menu-bar {
+  width: 86px;
+  height: 100%;
+}
+
+.map-main .info-box .menu-bar li {
+  width: 100%;
+  height: 86px;
+  background-color: #DADEE2;
+}
+
+.map-main .info-box .menu-bar li.active {
+  background-color: transparent;
+}
+
+.map-main .info-box .menu-bar li:last-child {
+  height: 100%;
+}
+
+.map-main .cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+}
+
+.map-main .map-wrap {
+  position: relative;
+  width: calc(100% - 440px);
+  max-width: 1440px;
+  overflow: hidden;
+}
+
+.location {
+  background-repeat: no-repeat;
+  width: 140px;
+  height: 140px;
+  cursor: pointer;
+}
+
+.ncl-location-pin {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#loc-a-1, #loc-a-2, #loc-a-3, #loc-a-4, #loc-a-5 {
+  width: 186px;
+  height: 140px;
+  left: -90px;
+  top: -70px;
+  background-image: url("../../img/story_map/marker_1_1.png");
+}
+/*# sourceMappingURL=storymap.css.map */

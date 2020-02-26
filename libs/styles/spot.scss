@@ -1,0 +1,73 @@
+
+$heroTitleWidth : 612px ;
+
+.spot-wrap { 
+    position: relative; height: 800vh;
+    .trigger { position: absolute; display: block; height:1px; width:100px; right:0; background:red;}
+    #trigger-0{ top: 50vh;}
+    #trigger-1{ top: 60vh;}
+    #trigger-2{ top: 100vh;}
+    #trigger-3{ top: 150vh;}
+    #trigger-4{ top: 200vh;}
+    #trigger-5{ top: 300vh;}
+}
+.slide {
+    width: 100%; height:100vh;
+    &#slide-hero {
+        background-color:#3ACEE3; height:100vh;
+        transition: all 0.4s ease-out;
+        &.active { background-color:#ED43C8;}
+        .title-wrap {
+            width: $heroTitleWidth; height: 413px; position: absolute; 
+            background-image:url('../../img/spot/hero_title.png');
+            background-size: cover;
+            left: calc(50% - ( #{$heroTitleWidth} / 2 ));
+            animation: HeroTitle1 0.6s both; z-index: 5;
+        }
+        .object-1, .object-2 { position: absolute; img { width:100%;} }
+        .object-1{
+            width: 321px; height: 434px; top: 32vh; left:-30%; z-index: 10;
+                       
+        }
+        .object-2{
+            width: 197px; height: 456px; top: 29vh; right: 25%; z-index: 1;
+            animation: HeroObject2 1s both;            
+        }
+    }
+    @keyframes HeroTitle1 { 0%{ top: -50vh; } 100%{ top: 18vh; } }
+    @keyframes HeroObject1 { 0%{ left: -50%; } 100%{ left: 15%; } }
+    @keyframes HeroObject2 { 0%{ right: -50%; } 100%{ right: 20%; } }
+
+    &#slide-2 { 
+        position: absolute; top:100vh;
+        background-image:url('../../img/spot/cafe_1_1.png');
+        background-size:cover;
+        .overlay {
+            display: block; position: absolute; top:0; left:0;
+            width:100%; height:100%; background-color:#000; opacity: 0.85;
+        }
+        &.pin { position: fixed; }
+        .map-wrap{
+            position: absolute; width:652px; height: 482px; left: -660px; top: 20vh;
+            background-size:cover;
+            background-image:url('../../img/spot/seoul_map.png');
+            background-repeat: no-repeat; transition: all 0.4s ease-out;
+            &.active {
+                left: 10vw;
+            }
+            .marker {
+                position: absolute; width:30px; height:30px; border-radius: 50%;
+                background:#FF4848; border: 8px solid #fff; box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+                &#marker1 { top:200px; right: 210px; }
+                &#marker2 { top:260px; right: 300px; }
+            }
+        }
+        .des-wrap {
+            position: absolute; width: 360px; top: 20vh; right: calc(50% - 500px); color:#fff;
+            h2 {
+                font-size: 3vw; line-height: 1em;
+            }
+            p{ margin-top: 1rem; line-height: 1.5em;}
+        }  
+    }
+}

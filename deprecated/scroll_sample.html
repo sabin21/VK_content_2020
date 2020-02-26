@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Korea</title>
+
+	<link href="./libs/styles/common.css" rel="stylesheet">
+	<link href="./libs/styles/vk_basic.css" rel="stylesheet">
+	<link href="./libs/styles/scroll_sample.css" rel="stylesheet">
+
+</head>
+
+  <body>
+    
+	<div class="wrap">
+        
+        <section class="hero-wrap">
+            <div class="title-wrap">
+                <h1 class="ml10 title">
+                    <span class="text-wrapper">
+                    <span class="letters">Domino Dreams</span>
+                    </span>
+                </h1>
+            </div>
+        </section>
+
+        <section class="section-2">
+            
+        </section>
+        
+    </div>
+    
+    <script type="text/javascript" src="./libs/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="./libs/anime/anime.min.js"></script>
+    
+
+	<script>
+        var textWrapper = document.querySelector('.ml10 .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+        var tlML10 = new anime.timeline({loop:true});
+        tlML10
+        .add({
+            targets: '.ml10 .letter',
+            rotateY: [-90, 0],
+            duration: 1300,
+            delay: (el, i) => 45 * i
+        }).add({
+            targets: '.ml10',
+            opacity: 0,
+            duration: 1000,
+            easing: "easeOutExpo",
+            delay: 1000
+        });
+        /*
+        var controller = new ScrollMagic.Controller({refreshInterval: 0});
+        var conHero = new ScrollMagic.Controller({triggerHook:'onLeave'});
+
+        var tlHeroStart = new gsap.timeline();
+        var tlHero = new gsap.timeline();
+        var tlHeroMap = new gsap.timeline();      
+
+        tlHeroStart
+        .to("#slide-hero .object-1", 0.6, { left: '15%' },0);
+
+        var gsapHero = tlHero
+            .to(".hero-wrap .overlay", 0.3, { opacity: 0 })
+            .to(".hero-wrap .title-wrap", 0.3, { opacity: 0,scale: 0.1},0);
+        var heroMap = tlHeroMap.delay(1)
+            .to(".map-wrap", 0.3, { scale: 3.1 })
+            .to(".map-wrap", 0.3, { translateX: "0.5vw"},0)
+            .to(".map-wrap", 0.3, { translateY: "56vh"},0)
+            .to(".map-wrap .other", 0.3, { opacity: 0 },0);
+
+        new ScrollMagic.Scene({triggerElement: "#trigger-1"})
+            .setTween(".map-wrap", 1, { opacity: 1, ease: Power2.easeOut}) 
+            .addTo(controller);
+
+        new ScrollMagic.Scene({triggerElement: "#trigger-1"})
+            .setTween(gsapHero)
+            .addTo(controller);
+
+        new ScrollMagic.Scene({triggerElement: "#trigger-1"})
+            .setTween(heroMap)
+            .addTo(controller);
+        
+        
+        new ScrollMagic.Scene({triggerElement: "#trigger-5"})
+            .on("change",slide2UnFix)    
+            .addTo(controller);
+        
+        
+        new ScrollMagic.Scene({triggerElement: "#trigger-3", duration: 1000})
+            .setPin ("#slide-2")      
+            .addTo(controller);
+            
+
+        new ScrollMagic.Scene({triggerElement: "#trigger-2"})
+            .setClassToggle ("#slide-2 .map-wrap", "active")      
+            .addTo(controller);
+            */
+	</script>
+
+</body>
+</html>

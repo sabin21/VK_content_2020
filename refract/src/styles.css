@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Sulphur+Point&display=swap');
+
+*, *::after, *::before { box-sizing: border-box; }
+:root { font-size: 20px; }
+::selection { background: #2ddab8; color: white; }
+
+body {
+  margin: 0; padding: 0; background: #0c0f13; overflow: hidden;
+  font-family: 'Sulphur Point', sans-serif; color: #8b8b8b; font-size: 0.9rem;
+}
+a { color: #545454; text-decoration: none; }
+a:focus, a:hover { color: #8b8b8b; }
+#root { width: 100vw; height: 100vh; overflow: hidden; }
+
+.loading {
+  padding: 10px;
+  transform: translate3d(-50%, -50%, 0);
+  color: #8b8b8b;
+}
+.scrollArea {
+  position: absolute; top: 0; left: 0;
+  width: 100vw; height: 100vh; overflow: auto;
+}
+.bottom-left {
+  padding: 1.5rem;
+  transform: translate3d(0, -100%, 0) !important;
+}
+.canvas > div {
+  z-index: 10000000;
+}
+.text-block-end { 
+  position: relative; width:50vw; height: 20vh; color: #fff;
+  margin:0 auto; transform: translate3d(-50%, -50%, 0);
+  border: 1px solid white;
+}
+.text-block-end p{ font-size: 2rem;  text-align: center; }
+
+@media screen and (min-width: 53em) {
+	body {
+		overflow: hidden;
+	}
+  .bottom-left {
+    padding: 0 0 2rem 3.7rem;
+  }
+}
