@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,WAAW,CAAC;EACR,KAAK,EAAC,IAAI;EAAE,MAAM,EAAE,IAAI;EAAE,gBAAgB,EAAE,IAAI;EAChD,OAAO,EAAE,MAAM;CAIlB;;AAND,AAGI,WAHO,AAGN,MAAM,CAAC;EACJ,QAAQ,EAAE,KAAK;CAClB",
+    "sources": [
+        "vk_theme_common.scss"
+    ],
+    "names": [],
+    "file": "vk_theme_common.css"
+}

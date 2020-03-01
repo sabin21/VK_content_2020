@@ -49,7 +49,7 @@ body {
 }
 
 .hero-video-wrap {
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: calc(100vh - 60px);
   overflow: hidden;
@@ -63,6 +63,7 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
+  z-index: 10;
 }
 
 .hero-video-wrap video {
@@ -73,6 +74,16 @@ body {
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.hero-video-wrap .theme-logo-wrap {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 60px);
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
 .list-wrap figure {
