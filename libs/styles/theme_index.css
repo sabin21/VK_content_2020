@@ -5,6 +5,13 @@
   overflow: hidden;
 }
 
+.theme-index-hero-wrap .cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
 .theme-index-hero-wrap .hero-title-wrap {
   position: absolute;
   z-index: 1;
@@ -33,7 +40,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(29, 46, 74, 0.5);
+  background-color: rgba(16, 32, 56, 0.8);
 }
 
 .theme-index-hero-wrap .hero-video-wrap .theme-logo-wrap {
@@ -143,27 +150,13 @@
 .theme-index-content-wrap {
   position: relative;
   width: 100%;
+  background-color: #2C326A;
+  background-attachment: fixed;
 }
 
 .theme-index-content-wrap .block-wrap {
   position: relative;
   min-height: 100vh;
-}
-
-.theme-index-content-wrap .block-wrap:nth-child(1) {
-  background-color: #8C80DD;
-}
-
-.theme-index-content-wrap .block-wrap:nth-child(2) {
-  background-color: #8C80DD;
-}
-
-.theme-index-content-wrap .block-wrap:nth-child(3) {
-  background-color: #8C80DD;
-}
-
-.theme-index-content-wrap .block-wrap:nth-child(4) {
-  background-color: #8C80DD;
 }
 
 .theme-index-content-wrap .block-wrap .block-inner-wrap {
@@ -180,11 +173,23 @@
   -ms-grid-columns: 50% 25% 25%;
       grid-template-columns: 50% 25% 25%;
   gap: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
 }
 
-.theme-index-content-wrap .block-wrap .block-inner-wrap .item:nth-child(1) {
+.theme-index-content-wrap .block-wrap .block-inner-wrap .item {
+  padding: 1.75vw 2vw;
+}
+
+.theme-index-content-wrap .block-wrap .block-inner-wrap .item.big {
   background-color: #fff;
   grid-row: span 2;
+  padding: 2.5vw 3vw;
+}
+
+.theme-index-content-wrap .block-wrap .block-inner-wrap .item.big h1 {
+  font-size: 4vw;
+  line-height: 1.1em;
 }
 
 .theme-index-content-wrap .block-wrap .block-inner-wrap .item:nth-child(2) {
@@ -201,5 +206,10 @@
 
 .theme-index-content-wrap .block-wrap .block-inner-wrap .item:nth-child(5) {
   background-color: #D0CAFF;
+}
+
+.theme-index-content-wrap .block-wrap .block-inner-wrap .item .title {
+  font-size: 2vw;
+  line-height: 1.1em;
 }
 /*# sourceMappingURL=theme_index.css.map */

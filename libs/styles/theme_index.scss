@@ -4,7 +4,10 @@ $vkHeaderHeight: 179px;
 .theme-index-hero-wrap {
     position: relative; width:100%; height:calc(100vh - #{$vkHeaderHeight});
     overflow: hidden;
-    
+    .cover {
+        position: absolute; width: 100%; height:100%;
+        background-color: #fff; 
+    }
     .hero-title-wrap {
         position: absolute; z-index: 1;
     }
@@ -16,7 +19,7 @@ $vkHeaderHeight: 179px;
         }
         .overlay {
             position: absolute; width:100%; height: 100%; top:0; left: 0;
-            background-color:rgba(29,46,74,0.5);
+            background-color:rgba(16, 32, 56, 0.8);
         }
         .theme-logo-wrap {
             position: absolute; width: 30vw; height: 40vh; margin:auto; 
@@ -75,22 +78,28 @@ $vkHeaderHeight: 179px;
     }
 }
 .theme-index-content-wrap {
-    position: relative; width:100%;
+    position: relative; width:100%; 
+    background-color:#2C326A; background-attachment: fixed; 
     .block-wrap{
         position: relative; min-height:100vh;
-        &:nth-child(1){ background-color:#8C80DD; }
-        &:nth-child(2){ background-color:#8C80DD; }
-        &:nth-child(3){ background-color:#8C80DD; }
-        &:nth-child(4){ background-color:#8C80DD; }
+        //&:nth-child(1){ background-color:#8C80DD; }
+        //&:nth-child(2){ background-color:#8C80DD; }
+        //&:nth-child(3){ background-color:#8C80DD; }
+        //&:nth-child(4){ background-color:#8C80DD; }
         .block-inner-wrap {
             position: relative; display: grid; width:86%; max-width: 1160px;
             height: 70vh; top:15vh; margin:0 auto;
             grid-template-rows: 50% 50%;
             grid-template-columns: 50% 25% 25%; gap:4px;
+            font-family: 'Raleway', sans-serif; font-weight: 700; 
             .item {
-                &:nth-child(1){
+                padding: 1.75vw 2vw;
+                &.big{
                     background-color:#fff;
-                    grid-row: span 2;
+                    grid-row: span 2; padding: 2.5vw 3vw; 
+                    h1 {
+                       font-size: 4vw; line-height: 1.1em;
+                    }
                 }
                 &:nth-child(2){
                     background-color:#CCF4EC;
@@ -103,6 +112,9 @@ $vkHeaderHeight: 179px;
                 }
                 &:nth-child(5){
                     background-color:#D0CAFF;
+                }
+                .title {
+                    font-size: 2vw; line-height: 1.1em;
                 }
             }            
         }

@@ -18,34 +18,20 @@
 }
 
 .c-header_title {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    padding: rem($unit-small) 0;
-    perspective: 600px;
-    -webkit-perspective: 600px;
+    position: absolute; bottom: 0; left: 0; margin: 0;
+    padding: rem($unit-small) 0; perspective: 600px;
 }
 
 .c-header_line {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: 0;
-    transform: scaleX(0);
-    transition: transform 0.6s $easing;
-
+    position: absolute; bottom: 0; right: 0; left: 0; margin: 0;
+    transform: scaleX(0); transition: transform 0.6s $easing;
     &.is-inview {
         transform: scaleX(1)
     }
 }
 
 .c-header_title_line {
-   display: block;
-   opacity: 0;
-   transform-origin: center top;
-   transform-style: preserve-3d;
+   display: block; opacity: 0; transform-origin: center top; transform-style: preserve-3d;
    transform: translateY(100%) rotateX(-80deg);
    transition: opacity 0s $Power2EaseOut, transform 0s $Power2EaseOut;
 

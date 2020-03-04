@@ -16,9 +16,7 @@
 //
 .o-h {
     @include h;
-    margin-bottom: 0;
-    line-height: 1;
-    font-weight: $normal;
+    margin-bottom: 0; line-height: 1; font-weight: $normal;
 }
 
 //
@@ -32,49 +30,20 @@
 //
 h1, .o-h1 {
     @extend .o-h;
-
     line-height: 0.9; letter-spacing: -0.02em;
-
     @media (max-width: $to-small) {
         font-size: 12vw;
     }
-
     @media (min-width: $from-small) and (max-width: $to-huge) {
         font-size: $font-size-h1;
     }
-
     @media (min-width: $from-huge) {
         font-size: 12vw;
     }
 }
 
-h2, .o-h2 {
-    @extend .o-h;
-
-    font-size: rem($font-size-h2);
-}
-
-h3, .o-h3 {
-    @extend .o-h;
-
-    font-size: rem($font-size-h3);
-}
-
-h4, .o-h4 {
-    @extend .o-h;
-    line-height: 1.2;
-
-    font-size: rem($font-size-h4);
-}
-
-h5, .o-h5 {
-    @extend .o-h;
-
-    font-size: rem($font-size-h5);
-}
-
-h6, .o-h6 {
-    @extend .o-h;
-
-    font-size: rem($font-size-h6);
-}
+h2, .o-h2 { @extend .o-h; font-size: rem($font-size-h2); }
+h3, .o-h3 { @extend .o-h; font-size: rem($font-size-h3); }
+h4, .o-h4 { @extend .o-h; line-height: 1.2; font-size: rem($font-size-h4); }
+h5, .o-h5 { @extend .o-h; font-size: rem($font-size-h5); }
+h6, .o-h6 { @extend .o-h; font-size: rem($font-size-h6); }

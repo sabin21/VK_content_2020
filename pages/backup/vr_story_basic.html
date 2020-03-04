@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WebGL Core One</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="../libs/styles/common.css" />
+	<link rel="stylesheet" type="text/css" href="../libs/styles/vr_story_basic.css" />
+</head>
+
+  <body>
+	
+	
+	<main>
+		<div class="scene-one-wrap">
+			<section class="scene-one" id="scene-one">
+				
+			</section>
+		</div>
+		<video src="../video/night_sky_01.mp4" muted loop autoplay id="video-hero"></video>
+	</main>
+	<script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+	<script src="../libs/gsap/gsap.min.js"></script>
+
+<script type="module">
+
+	import * as THREE from '../libs/threejs/build/three.module.js';
+	import {GLTFLoader} from '../libs/threejs/examples/jsm/loaders/GLTFLoader.js';
+	import { OrbitControls } from '../libs/threejs/examples/jsm/controls/OrbitControls.js';
+	
+	var camera, scene, container,renderer, controls, dirLight;
+		  
+	init();
+	animate();
+
+	function init() {
+			
+		container = document.getElementById( 'scene-one' );
+		camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1100 );
+		camera.target = new THREE.Vector3( 0, 0, 0 );
+		camera.position.set( 0, 0, 25 );
+		camera.updateProjectionMatrix();
+
+		scene = new THREE.Scene();
+		//scene.fog = new THREE.Fog( 0x000000, 50, 500);
+		//scene.fog.transparent = true;
+		//scene.fog.opacity = 0.2;
+		var skyGeo = new THREE.SphereBufferGeometry( 500, 60, 40 );
+		skyGeo.scale( - 1, 1, 1 );
+
+		var texLoader = new THREE.TextureLoader();
+		var textureToShow = 0;
+		var skyMaterial = new THREE.MeshBasicMaterial();
+		var sky = new THREE.Mesh(skyGeo, skyMaterial);
+		texLoader.load('../img/360photo/night_sky_1.jpg', function(tex) {
+			skyMaterial.map = tex;
+			scene.add( sky );
+		});
+			
+		const loader1 = new GLTFLoader();							
+		loader1.load( '../models/ground_scene.gltf', function ( gltf ) {
+			var meshGround = gltf.scene;
+			meshGround.position.set(0, -7, 0);					
+			scene.add( meshGround );
+		} );
+		var video = document.getElementById( 'video-hero' );
+			video.play();
+		var vidTexture = new THREE.VideoTexture( video );
+		var panelGeo = new THREE.BoxBufferGeometry(30, 20, 0.1);
+		var panelMaterial = [
+			new THREE.MeshBasicMaterial( {color:0xe0e0e0}),
+			new THREE.MeshBasicMaterial( {color:0xe0e0e0}),
+			new THREE.MeshBasicMaterial( {color:0xe0e0e0}),
+			new THREE.MeshBasicMaterial( {color:0xe0e0e0}),
+			new THREE.MeshBasicMaterial( { map: vidTexture }),
+			new THREE.MeshBasicMaterial( {color:0xe0e0e0})
+		]
+		var panelMesh = new THREE.Mesh(panelGeo, panelMaterial);
+		scene.add(panelMesh);
+		
+		//-- Lights		
+		var pointLight1 = new THREE.PointLight( 0xffffff, 2, 100 );
+		pointLight1.position.set(0, 20, 10);
+		scene.add(pointLight1 );
+
+		dirLight = new THREE.DirectionalLight( 0xffffff, 0.7 );
+		dirLight.color.setHSL( 1, 1, 1 );
+		dirLight.position.set( - 1, 1.75, 1 );
+		dirLight.position.multiplyScalar( 30 );
+		//scene.add( dirLight );
+		dirLight.castShadow = true;
+		dirLight.shadow.mapSize.width = 2048;
+		dirLight.shadow.mapSize.height = 2048;
+
+		//-- Renderer
+		renderer = new THREE.WebGLRenderer();
+		renderer.setPixelRatio( window.devicePixelRatio );
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		container.appendChild( renderer.domElement );
+		
+		//-- Controls
+		controls = new OrbitControls( camera, renderer.domElement );
+		controls.enableDamping = true;
+		controls.dampingFactor = 0.05;
+		controls.screenSpacePanning = false;
+		controls.minDistance = 20;
+		controls.maxDistance = 30;
+		controls.maxPolarAngle = Math.PI / 2;
+
+		//-- Events
+		window.addEventListener( 'resize', onWindowResize, false );			  
+	}
+
+	function onWindowResize() {
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+	}
+	
+	function animate() {
+		requestAnimationFrame( animate );
+		renderer.render( scene, camera );
+		controls.update();
+	}
+
+</script>
+  
+  </body>
+
+  
+</html>
