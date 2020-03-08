@@ -1,0 +1,742 @@
+<!doctype html>
+<html class="is-smooth-scroll-compatible is-loading" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Visit Korea</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../libs/styles/common.css" />
+        <link rel="stylesheet" href="../libs/styles/vk_theme_common.css">
+        <link rel="stylesheet" href="../libs/aos/aos.css">
+        <link rel="stylesheet" href="../libs/styles/mokpo.css">
+    </head>
+    <body>
+        <div class="sub-header fixed"></div>
+        <div class="scroll-wrap">
+            
+            
+            <div class="hero-wrap">
+                <div class="title-wrap">
+                    <h1 class="upper" data-aos="fade-in" data-aos-duration="3000">Romantic Spots</h1>
+                    <h1 class="down" data-aos="fade-in" data-aos-duration="3000">Mokpo</h1>
+                    <p data-aos="fade-up" data-aos-duration="2000">Romantic travel course in Mokpo<br>confirming the love of lovers</p>
+                </div>                              
+            </div>
+            
+            <div class="contents-wrap">
+
+                <section class="block-1-wrap">
+                    <p data-aos="fade-in" data-aos-duration="1000">
+                        Mokpo has more romantic and fascinating night view
+                        spots than anywhere in Korea. Men and women who
+                        ride awkward 'thumbs', lovers who are already meeting
+                        well, and couples who need a new change will fall in 
+                        love if they face Mokpo night view.
+                    </p>
+                </section>
+
+                <section class="block-2-wrap">
+                    <article class="item-wrap">
+                        <span class="time-wrap">04:30 PM</span>
+                        <a class="pict-wrap" id="pict-01"  data-aos ="colorBack" data-aos-offset="200" data-aos-delay="200">
+                            <span class="cover" data-aos ="cover" data-aos-offset="200" data-aos-delay="100"></span>
+                        </a>
+                        <span class="color-back" data-aos ="colorBack" data-aos-offset="200"></span>
+                        <div class="title-wrap">
+                            <h1 data-aos="fade-left" data-aos-duration="1000">Mokpo crab<br>bibimbap</h1>
+                            <p data-aos="fade-in" data-aos-delay="200">
+                                Mokpo crab meat bibimbap is a must-eat place. 
+                                Whenever you eat, the crab sauce seasoned with 
+                                fresh blue crab at that time has a different taste 
+                                from the general seasoned crab. Unlike the savory crab, 
+                                the air cooked with the sweet and sour taste is a 
+                                rice thief that makes it empty.
+                            </p>
+                        </div>
+                    </article>
+                </section>
+
+            </div>
+
+
+
+        </div>
+        <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../libs/pixijs/pixi.min_4.3.5.js"></script>
+        <script src="../libs/gsap/gsap.min.js"></script>
+        <script src="../libs/aos/aos.js"></script>
+        <script>
+            /*
+            const tlPage = new gsap.timeline({
+                paused:true
+            });
+            tlPage.to('.block-1-wrap', {opacity:1, duration:3});
+
+            $('#js-scroll').height(tlPage.duration() * 1000);
+
+            var containerHeight = $('#js-scroll').height();
+            var viewportHeight = $(window).height();
+            //var $scrollPosEl = $('#scrollpos');
+
+            $(window).on('scroll', function(ev) {            
+                var scrollPos = $(ev.target).scrollTop();
+                tlPage.progress(scrollPos/(containerHeight - viewportHeight));
+            });
+            
+*/
+            
+            
+            AOS.init();
+        </script>
+        <script>
+            
+            const shaderData = {
+            uniforms: {
+                iResolution: {
+                type: 'v2',
+                value: [
+                    window.innerWidth, window.innerHeight,
+                ],
+                },
+                vTextureSize: {
+                type: 'v2',
+                value: [
+                    0,0,
+                ],
+                },
+                uTextureForeground: { type: 'sampler2D', value: null, },
+                uTextureBackground: { type: 'sampler2D', value: null, },
+                uTextureDropShine: { type: 'sampler2D', value: null, },
+            },
+
+            fragment: `
+                    precision mediump float;
+                
+                    //Textures
+                    uniform sampler2D uTextureForeground;
+                    uniform sampler2D uTextureBackground;
+                    uniform sampler2D uTextureDropShine;
+                    
+                    //Canvas image data
+                    uniform sampler2D uSampler;
+                
+                    //The resolution and coordinates of the current pixel
+                    uniform vec2 iResolution;
+                    uniform vec2 vTextureSize;
+                    varying vec2 vTextureCoord;
+                    
+                    //Function to get the vec2 value of the current coordinate
+                    vec2 texCoord(){
+                        return vec2(gl_FragCoord.x, iResolution.y - gl_FragCoord.y) / iResolution;
+                    }
+
+                    //Scales the bg up and proportionally to fill the container
+                    vec2 scaledTextureCoordinate(){
+                        float ratioCanvas = iResolution.x / iResolution.y;
+                        float ratioImage = vTextureSize.x / vTextureSize.y;
+                        
+                        vec2 scale = vec2(1, 1);
+                        vec2 offset = vec2(0, 0);
+                        float ratioDelta = ratioCanvas - ratioImage;
+
+                        if(ratioDelta >= 0.0){
+                            scale.y = (1.0 + ratioDelta);
+                            offset.y = ratioDelta / 2.0;
+                        }else{
+                            scale.x = (1.0 - ratioDelta);
+                            offset.x = -(ratioDelta / 2.0);
+                        }
+
+                        return (texCoord() + offset) / scale;
+                    }
+                    
+                    //Alpha-blends two colors
+                    vec4 blend(vec4 bg, vec4 fg){
+                        vec3 bgm = bg.rgb * bg.a;
+                        vec3 fgm = fg.rgb * fg.a;
+                        float ia = 1.0 - fg.a;
+                        float a = (fg.a + bg.a * ia);
+                        
+                        vec3 rgb;
+                        
+                        if(a != 0.0){
+                            rgb = (fgm + bgm * ia) / a;
+                        }else{
+                            rgb = vec3(0.0,0.0,0.0);
+                        }
+                        
+                        return vec4(rgb,a);
+                    }
+                    
+                    vec2 pixel(){
+                        return vec2(1.0, 1.0) / iResolution;
+                    }
+                    
+                    //Get color from fg
+                    vec4 fgColor(){
+                        return texture2D(uSampler, vTextureCoord);
+                    }
+                            
+                    void main(){
+                        vec4 bg = texture2D(uTextureBackground, scaledTextureCoordinate());
+                        vec4 cur = fgColor();
+
+                        float d = cur.b; // "thickness"
+                        float x = cur.g;
+                        float y = cur.r;
+                        float a = smoothstep(0.65, 0.7, cur.a);
+                        
+                        vec4 smoothstepped = vec4(y, x, d, a);
+
+                        vec2 refraction = (vec2(x, y) - 0.5) * 2.0;
+                        vec2 refractionPos = scaledTextureCoordinate() + (pixel() * refraction * (256.0 + (d * 512.0)));
+                        vec4 tex = texture2D(uTextureForeground, refractionPos);
+                        
+                        float maxShine = 390.0;
+                        float minShine = maxShine * 0.18;
+                        vec2 shinePos = vec2(0.5, 0.5) + ((1.0 / 512.0) * refraction) * -(minShine + ((maxShine-minShine) * d));
+                        vec4 shine = texture2D(uTextureDropShine, shinePos);
+                        tex = blend(tex,shine);
+                        
+                        vec4 fg = vec4(tex.rgb, a);
+                        gl_FragColor = blend(bg, fg);
+                    }
+                `,
+            };
+
+            
+            class Application {
+            
+            constructor() {
+                this.width = window.innerWidth;
+                this.height = window.innerHeight;
+
+                // Define the assets that PIXI needs to preload to use later in the application
+                this.loader = PIXI.loader
+                .add('../img/mokpo/alpha.png')
+                .add('../img/mokpo/shine.png')
+                .add('../img/mokpo/hero_blur.png')
+                .add('../img/mokpo/hero_basic.png')
+                .load(() => this.initialize());
+            }
+
+            initialize() {
+                
+                // Create a new instance of the EffectCanvas which is going to produce all of the visuals
+                this.effectCanvas = new EffectCanvas(this.width, this.height, this.loader);
+
+                // Resize listener for the canvas to fill browser window dynamically
+                window.addEventListener('resize', () => this.resizeCanvas(), false);
+
+                // Start the initial loop function for the first time
+                this.loop();
+            }
+
+
+            resizeCanvas() {
+                this.width = window.innerWidth;
+                this.height = window.innerHeight;
+
+                this.effectCanvas.resize(this.width, this.height);
+            }
+
+            loop() {
+                window.requestAnimationFrame(() => this.loop());
+                this.effectCanvas.update(this.width, this.height);
+                this.effectCanvas.render();
+            }
+            }
+
+            class EffectCanvas {
+
+            constructor(width, height, loader) {
+                // Create and configure the renderer
+                this.renderer = new PIXI.autoDetectRenderer(width, height, {
+                antialias: false,
+                transparent: false,
+                });
+                this.renderer.autoResize = true;
+                document.body.appendChild(this.renderer.view);
+
+                // Create a container object called the `stage`
+                this.stage = new PIXI.Container();
+
+                // Create a graphics object that is as big as the scene of the users window
+                // Else the shader won't fill the entire screen
+                this.background = new PIXI.Graphics();
+                this.background.fillAlphanumber = 0;
+                this.background.beginFill('0xffffff');
+                this.background.drawRect(0, 0, width, height);
+                this.background.endFill();
+                this.background.alpha = 0;
+                this.stage.addChild(this.background);
+
+                // Create the DropletManager and pass it the stage so it can insert the droplet containers into it
+                this.dropletManager = new DropletManager(this.stage, loader);
+
+                // Send information about the textures and the size of the background texture through the uniforms to the shader
+                shaderData.uniforms.uTextureDropShine.value = loader.resources['../img/mokpo/shine.png'].texture;
+                shaderData.uniforms.uTextureBackground.value = loader.resources['../img/mokpo/hero_blur.png'].texture;
+                shaderData.uniforms.uTextureForeground.value = loader.resources['../img/mokpo/hero_basic.png'].texture;
+                shaderData.uniforms.vTextureSize.value = [
+                loader.resources['../img/mokpo/hero_blur.png'].texture.width,
+                loader.resources['../img/mokpo/hero_basic.png'].texture.height,
+                ];
+
+                // Create our Pixi filter using our custom shader code
+                this.dropletShader = new PIXI.Filter('', shaderData.fragment, shaderData.uniforms);
+
+                // Apply it to our object
+                this.stage.filters = [this.dropletShader];
+            }
+
+            resize(width, height) {
+                this.renderer.resize(width, height);
+
+                this.background.clear();
+                this.background.beginFill('0xffffff');
+                this.background.drawRect(0, 0, width, height);
+                this.background.endFill();
+            }
+
+            update(width, height) {
+                this.updateShader(width, height);
+                this.dropletManager.update(width, height);
+            }
+
+            updateShader(width, height) {
+                this.dropletShader.uniforms.iResolution = [
+                width,
+                height,
+                ];
+            }
+            
+            render() { this.renderer.render(this.stage); } }
+
+
+            class DropletManager {
+            constructor(stage, loader) {
+                let smallDropletAmount = 9000;
+                let largeDropletAmount = 200;
+
+                //Quick implementation to make sure there aren't out of this world thunderstorms on mobile
+                if(stage.width < 700){
+                smallDropletAmount = 3000;
+                largeDropletAmount = 150;
+                }
+
+                this.options = {
+                spawnRate: { small: 0.6, large: 0.05, },
+                spawnsPerFrame: { small: 200, large: 5, },
+                spawnMass: {
+                    small: { min: 1, max: 2, },
+                    large: { min: 7, max: 10, },
+                },
+                poolDroplets: {
+                    small: { min: smallDropletAmount - 500, max: smallDropletAmount, },
+                    large: { min: largeDropletAmount - 100, max: largeDropletAmount, },
+                },
+                maximumMassGravity: 17, maximumMass: 21, dropletGrowSpeed: 1, dropletShrinkSpeed: 2, dropletContainerSize: 100,
+                };
+
+                // Define a position matrix so we can calculate all the edges of a droplet in a single loop
+                this.positionMatrix = [ [-1, -1], [1, -1], [-1, 1], [1, 1], ];
+
+                this.smallDroplets = [];
+                this.largeDroplets = [];
+
+                this.dropletSmallTexture = loader.resources['../img/mokpo/alpha.png'].texture;
+                this.dropletLargeTexture = loader.resources['../img/mokpo/alpha.png'].texture;
+
+                // Create a container for all the droplets
+                this.smallDropletContainer = new DropletPool(Droplet, this.dropletSmallTexture, this.options.poolDroplets.small.min, this.options.poolDroplets.small.max);
+                this.largeDropletContainer = new DropletPool(LargeDroplet, this.dropletLargeTexture, this.options.poolDroplets.large.min, this.options.poolDroplets.large.max);
+
+                stage.addChild(this.largeDropletContainer);
+                stage.addChild(this.smallDropletContainer);
+            }
+
+            update(width, height) {
+                DropletManager.removeLargeOffscreenDroplets(width, height, this.largeDroplets, this.largeDropletContainer);
+
+                // Trigger the spawn function for a small droplet as much times as is configured in the options
+                for (let i = 0; i < this.options.spawnsPerFrame.small; i++) {
+                this.spawnNewSmallDroplet(width, height);
+                }
+
+                // Trigger the spawn function for a large droplet as much times as is configured in the options
+                for (let i = 0; i < this.options.spawnsPerFrame.large; i++) {
+                this.spawnNewLargeDroplet(width, height);
+                }
+                this.checkLargeDropletLogic();
+            }
+
+            checkLargeDropletLogic() {
+                // Store the length of the array so the for loop doesn't have to do that every run
+                const largeDropletsLength = this.largeDroplets.length;
+
+                for (let i = largeDropletsLength - 1; i >= 0; i--) {
+                this.updateLargeDropletSize(this.largeDroplets[i]);
+                this.checkDropletMovement(this.largeDroplets[i]);
+                this.checkLargeToSmallDropletCollision(this.largeDroplets[i]);
+                this.checkLargeToLargeDropletCollision(this.largeDroplets[i]);
+                this.removeLargeDroplets(i);
+                }
+            }
+
+            removeLargeDroplets(i) {
+                if (this.largeDroplets[i].mass === 0 && this.largeDroplets[i].toBeRemoved === true) {
+                this.largeDropletContainer.destroy(this.largeDroplets[i]);
+                this.largeDroplets.splice(i, 1);
+                }
+            }
+
+            /**
+            * Function that updates the size of a single large Droplet
+            * @param droplet
+            */
+            updateLargeDropletSize(droplet) {
+                // If a droplet needs to be removed, we have to shrink it down to 0
+                if (droplet.toBeRemoved === true) {
+                this.shrinkDropletSize(droplet);
+                } else {
+                this.growDropletSize(droplet);
+                }
+
+                // Update the width and height of the droplet based on the new mass of the droplet
+                droplet.width = droplet.mass * 6;
+                droplet.height = droplet.mass * 7;
+            }
+
+            shrinkDropletSize(droplet) {
+                if (droplet.mass - this.options.dropletShrinkSpeed <= 0) {
+                droplet.mass = 0;
+                } else {
+                droplet.mass -= this.options.dropletShrinkSpeed;
+                }
+            }
+
+            growDropletSize(droplet) {
+                // If a droplet has already reached its target mass, exit here
+                if (droplet.mass === droplet.targetMass) {
+                return;
+                }
+
+                // Check if we can grow the droplet based on the configured grow speed
+                if (droplet.mass + this.options.dropletGrowSpeed >= droplet.targetMass) {
+                droplet.mass = droplet.targetMass;
+                } else {
+                droplet.mass += this.options.dropletGrowSpeed;
+                }
+            }
+
+            checkDropletMovement(droplet) {
+                if (droplet.toBeRemoved === true) {
+                return;
+                }
+
+                if (droplet.mass < this.options.maximumMassGravity && droplet.dropletVelocity.y === 0 && droplet.dropletVelocity.x === 0) {
+                if (Math.random() < 0.01) {
+                    droplet.dropletVelocity.y = Utils.getRandomInt(0.5, 3);
+                }
+                } else if (droplet.mass < this.options.maximumMassGravity && droplet.dropletVelocity.y !== 0) {
+                if (Math.random() < 0.1) {
+                    droplet.x += Utils.getRandomInt(-10, 10) / 10;
+                }
+                if (Math.random() < 0.1) {
+                    droplet.dropletVelocity.y = 0;
+                }
+                } else if (droplet.mass >= this.options.maximumMassGravity && droplet.dropletVelocity.y < 10) {
+                droplet.dropletVelocity.y = Utils.getRandomInt(10, 20);
+                droplet.dropletVelocity.x = Utils.getRandomInt(-10, 10) / 10;
+                }
+
+                droplet.y += droplet.dropletVelocity.y;
+                droplet.x += droplet.dropletVelocity.x;
+            }
+
+            getDropletPresenceArray(droplet) {
+
+                const arrayIndexes = [];
+                const length = this.positionMatrix.length;
+
+                for (let i = 0; i < length; i++) {
+                const edgePosition = {
+                    x: Math.floor((droplet.x + ((droplet.width / 7) * this.positionMatrix[i][0])) / this.options.dropletContainerSize),
+                    y: Math.floor((droplet.y + ((droplet.height / 7) * this.positionMatrix[i][1])) / this.options.dropletContainerSize),
+                };
+
+                if (i === 0) {
+                    arrayIndexes.push(edgePosition);
+                    continue;
+                }
+
+               if (arrayIndexes[0].x !== edgePosition.x || arrayIndexes[0].y !== edgePosition.y) {
+                    arrayIndexes.push(edgePosition);
+                }
+                }
+
+                return arrayIndexes;
+            }
+
+            checkLargeToLargeDropletCollision(droplet) {
+                if (droplet.toBeRemoved === true) {
+                return;
+                }
+
+                // Store the length of the droplets array so we have that valua cached in the for loop
+                const length = this.largeDroplets.length;
+
+                for (let i = length - 1; i >= 0; i--) {
+                // Don't bother checking this droplet against itself
+                if (droplet.x === this.largeDroplets[i].x && droplet.y === this.largeDroplets[i].y) {
+                    continue;
+                }
+
+                const dx = droplet.x - this.largeDroplets[i].x;
+                const dy = droplet.y - this.largeDroplets[i].y;
+
+                const distance = Math.sqrt((dx * dx) + (dy * dy));
+
+                if (distance <= (droplet.width / 7) + (this.largeDroplets[i].width / 7)) {
+                    if (droplet.mass + this.largeDroplets[i].mass <= this.options.maximumMass) {
+                    droplet.targetMass = droplet.mass + this.largeDroplets[i].mass;
+                    } else {
+                    droplet.targetMass = this.options.maximumMass;
+                    }
+
+                    this.largeDroplets[i].toBeRemoved = true;
+                }
+                }
+            }
+
+            checkLargeToSmallDropletCollision(droplet) {
+                if (droplet.toBeRemoved === true) {
+                return;
+                }
+
+                // Define a set of array indexes through which we have to search for collision
+                const arrayIndexes = this.getDropletPresenceArray(droplet);
+
+                for (let i = 0; i < arrayIndexes.length; i++) {
+                // If the small droplet doesn't exist anymore, we can continue to the next value in the loop
+                if (typeof this.smallDroplets[arrayIndexes[i].x] === 'undefined' || typeof this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y] === 'undefined') {
+                    continue;
+                }
+
+                // Store the length of the array so the for loop doesn't have to do that every run
+                const smallDropletsLength = this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y].length;
+
+                for (let c = smallDropletsLength - 1; c >= 0; c--) {
+                    // Calculate the difference in position for the horizontal and the vertical axis
+                    const dx = droplet.x - this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y][c].x;
+                    const dy = droplet.y - this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y][c].y;
+
+                    // Calculate the distance between the current droplet and the current other droplet
+                    const distance = Math.sqrt((dx * dx) + (dy * dy));
+
+                    // If the distance is small enough we can increase the size of the large droplet and remove the small droplet
+                    if (distance <= (droplet.width / 7) + (this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y][c].width / 7)) {
+                    if (droplet.mass + (this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y][c].mass / 3) <= this.options.maximumMass) {
+                        droplet.targetMass = droplet.mass + (this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y][c].mass / 3);
+                    }
+
+                    // Remove the small droplet and put it back in the object pool
+                    this.smallDropletContainer.destroy(this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y][c]);
+                    this.smallDroplets[arrayIndexes[i].x][arrayIndexes[i].y].splice(c, 1);
+                    }
+                }
+                }
+            }
+
+            spawnNewSmallDroplet(width, height) {
+                // If our random value doesn't match the given spawn rate, we don't spawn a droplet
+                if (Math.random() > this.options.spawnRate.small) {
+                return;
+                }
+
+                // Get a new droplet object from the pool
+                const droplet = this.smallDropletContainer.get();
+
+                // If the pool decided that we can't add more droplets, exit here
+                if (droplet === null) {
+                return;
+                }
+
+                const position = {
+                x: Utils.getRandomInt(0, width),
+                y: Utils.getRandomInt(0, height),
+                };
+                const mass = Utils.getRandomInt(this.options.spawnMass.small.min, this.options.spawnMass.small.max);
+                const arrayIndex = {
+                x: Math.floor(position.x / this.options.dropletContainerSize),
+                y: Math.floor(position.y / this.options.dropletContainerSize),
+                };
+
+                // Make sure the droplet updates with a new position and radius
+                droplet.x = position.x;
+                droplet.y = position.y;
+                droplet.mass = mass;
+                droplet.width = droplet.mass * 8;
+                droplet.height = droplet.mass * 8;
+
+                if (typeof this.smallDroplets[arrayIndex.x] === 'undefined') {
+                this.smallDroplets[arrayIndex.x] = [];
+                }
+
+                if (typeof this.smallDroplets[arrayIndex.x][arrayIndex.y] === 'undefined') {
+                this.smallDroplets[arrayIndex.x][arrayIndex.y] = [];
+                }
+
+                this.smallDroplets[arrayIndex.x][arrayIndex.y].push(droplet);
+            }
+
+            spawnNewLargeDroplet(width, height) {
+                // If our random value doesn't match the given spawn rate, we don't spawn a droplet
+                if (Math.random() > this.options.spawnRate.large) {
+                return;
+                }
+
+                // Get a new droplet object from the pool
+                const droplet = this.largeDropletContainer.get();
+
+                // If the pool decided that we can't add more droplets, exit here
+                if (droplet === null) {
+                return;
+                }
+
+                // Make sure the droplet updates with a new position and radius
+                const mass = Utils.getRandomInt(this.options.spawnMass.large.min, this.options.spawnMass.large.max);
+                droplet.x = Utils.getRandomInt(0, width);
+                droplet.y = Utils.getRandomInt(-100, height / 1.5);
+                droplet.mass = mass / 2;
+                droplet.targetMass = mass;
+                droplet.width = droplet.mass * 6;
+                droplet.height = droplet.mass * 7;
+                droplet.dropletVelocity.x = 0;
+                droplet.toBeRemoved = false;
+
+                this.largeDroplets.push(droplet);
+            }
+
+            static removeLargeOffscreenDroplets(width, height, dropletArray, dropletContainer) {
+                // Store the length of the array so the for loop doesn't have to do that every run
+                const length = dropletArray.length;
+
+                for (let i = length - 1; i >= 0; i--) {
+                if (dropletArray[i].x > width + 10 || dropletArray[i].x < -10 || dropletArray[i].y > height + 10 || dropletArray[i].y < -100) {
+                    dropletContainer.destroy(dropletArray[i]);
+                    dropletArray.splice(i, 1);
+                }
+                }
+            }
+            }
+
+            class DropletPool extends PIXI.particles.ParticleContainer {
+
+            constructor(ObjectToCreate, objectTexture, startingSize, maximumSize) {
+                super(maximumSize, {
+                scale: true,
+                position: true,
+                rotation: false,
+                uvs: false,
+                alpha: false,
+                });
+
+                this.ObjectToCreate = ObjectToCreate;
+                this.objectTexture = objectTexture;
+                this.pool = [];
+                this.inUse = 0;
+                this.startingSize = startingSize;
+                this.maximumSize = maximumSize;
+
+                this.initialize();
+            }
+
+            initialize() {
+                for (let i = 0; i < this.startingSize; i += 1) {
+                const droplet = new this.ObjectToCreate(this.objectTexture);
+                droplet.x = -100;
+                droplet.y = -100;
+                droplet.anchor.set(0.5);
+
+                // Add the object to the PIXI Container and store it in the pool
+                this.addChild(droplet);
+                this.pool.push(droplet);
+                }
+            }
+
+            get() {
+                // Check if we have reached the maximum number of objects, if so, return null
+                if (this.inUse >= this.maximumSize) {
+                return null;
+                }
+
+                // We haven't reached the maximum number of objects yet, so we are going to reuse an object
+                this.inUse++;
+
+                // If there are still objects in the pool return the last item from the pool
+                if (this.pool.length > 0) {
+                return this.pool.pop();
+                }
+
+                // The pool was empty, but we are still allowed to create a new object and return that
+                const droplet = new this.ObjectToCreate(this.objectTexture);
+                droplet.x = -100;
+                droplet.y = -100;
+                droplet.anchor.set(0.5, 0.5);
+
+                // Add the object to the PIXI Container and return it
+                this.addChild(droplet);
+                return droplet;
+            }
+
+            destroy(element) {
+                if (this.inUse - 1 < 0) {
+                console.error('Something went wrong, you cant remove more elements than there are in the total pool');
+                return;
+                }
+
+                element.x = -100;
+                element.y = -100;
+
+                this.inUse -= 1;
+                this.pool.push(element);
+            }
+            }
+
+            class Droplet extends PIXI.Sprite {
+
+            constructor(texture) {
+                super(texture);
+
+                this.mass = 0;
+            }
+            }
+
+
+            class LargeDroplet extends Droplet {
+
+            constructor(texture) {
+                super(texture);
+
+                this.dropletVelocity = new PIXI.Point(0, 0);
+                this.toBeRemoved = false;
+                this.targetMass = 0;
+            }
+            }
+
+            class Utils {
+
+            static getRandomInt(min, max) {
+                return Math.floor(Math.random() * ((max - min) + 1)) + min;
+            }
+            }
+
+            window.onload = () => {
+            const application = new Application();
+            };
+
+        </script>
+    </body>
+</html>

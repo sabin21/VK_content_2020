@@ -1,0 +1,133 @@
+
+@import '../styles/globals/mixins';
+
+html {
+    scroll-behavior: smooth;
+}
+canvas {
+    position: fixed; top:0; z-index: -2;    
+}
+
+.hero-wrap {
+    position: relative; width:100%; height:100vh; color:#fff;
+    left:0; overflow: hidden;
+    &:before{
+        content: ''; display: block; position: fixed; width:100vw; height: 100%;
+        background-color:rgba(0,0,0,0.2); left:0; top:0; z-index: -1;
+    }
+    .title-wrap{
+        position: absolute; width: 60vw; margin:auto;
+        left:0; right: 0; top:30vh; text-align: center;
+        h1.upper{
+            position: relative; font-size: 3.9vw; text-transform: uppercase; font-weight: 800;
+            line-height: 1em; font-family:'Poppins',sans-serif;
+        }
+        h1.down{
+            position: relative; font-size: 10vw; text-transform: uppercase;
+            line-height: 1.4em; font-family: 'Playfair Display', serif;
+            line-height: 0.8em;
+        }
+        p {
+            position: relative; font-size: 2vw; padding-bottom: 5vh; padding-top: 4vh;
+            font-family: 'PT serif', serif; margin-top: 5vh; line-height: 1.2em;
+        }
+        &:after {
+            content: ''; position: absolute; width:1px; height: 40vh; margin:auto;
+            left:0; right:0;
+            background-color:rgba(255,255,255,0.5);
+        }
+    }    
+}
+
+.contents-wrap{
+    position: relative; 
+    .block-1-wrap {
+        position: relative; width:100vw; height:100vh;
+        background: linear-gradient(to bottom, rgba(22,24,29,0) 0%,rgba(22,24,29,1) 50%,rgba(22,24,29,1) 100%);        
+        &:before {
+            content: ''; position: absolute; width:1px; height: 50vh;
+            background-color:rgba(255,255,255,0.5); margin: auto; left:0; right:0;            
+        }
+        
+        p{ 
+            position: relative; width: 44vw; color:white; 
+            margin: auto; text-align: center; font-size: 1.8vw; top: 60vh;
+            font-family: 'PT serif', serif; line-height: 1.75em;
+        }       
+    }
+}
+@keyframes lineTopBottom {
+    0%{ transform: scaleY(0)}
+    100%{ transform: scaleY(1)}
+}
+
+.block-2-wrap{
+    position: relative; width:100vw;  height:480vh;
+    background-color:rgba(22,24,29,1); 
+    //border: 1px solid gray;
+    .item-wrap{
+        position: relative; width: 80vw; max-width: 1160px; 
+        height: 120vh; margin: 0 auto;
+        .time-wrap{
+            position: absolute; width:24px; top:27.5%; left:0;
+            writing-mode: vertical-rl; color:#fff;
+            font-size: 14px; font-weight: bold;
+
+        }
+        .pict-wrap{
+            position: absolute; width: 45%; max-width: 618px; 
+            height: 54vh; max-height: 510px; margin:auto;
+            top:0; bottom:0; left:34px; overflow: hidden; z-index: 10;
+            box-shadow: 8px 8px 20px rgba(0,0,0,0.2);
+            transform-origin: top left;
+            @include backImageCover;
+            .cover {
+                position: absolute; width:100%; height: 100%;
+                z-index: 11; background-color: #fff;
+                transform-origin: top left; animation-direction: normal;
+            }
+            &#pict-01 { background-image: url(../../img/mokpo/pict_1.png); }
+            .pict { 
+                max-width:100%; object-fit: cover;                
+            }
+        }
+        .color-back{
+            position: absolute; width: 62%; height: 74vh; 
+            margin:auto; top:0; bottom:0; right:0;
+            background-color:#25224A; transition: all 0.4;
+            transform-origin: top right; 
+        }
+        .title-wrap{
+            position: absolute; width: 60%; height: 70vh; 
+            margin:auto; top:0; bottom:0; right:0; z-index: 20;
+            color:#fff;
+            h1{ 
+                position: absolute; top: 20%; left: 5%;
+                font-size: 68px; line-height: 1.1em; font-weight: 500;
+                font-family: 'Playfair Display',serif; 
+            }
+            p {
+                position: absolute; top: 53%; left: 25%;
+                width: 65%; font-size: 1.1rem; line-height: 1.5em; 
+                font-family: 'PT serif', serif; color:#C6C6C6;
+            }
+        }
+    }
+}
+[data-aos ="colorBack"] {
+    transform:scaleX(0);
+    &.aos-animate {
+        transform:scaleX(1);
+    }
+}
+[data-aos ="cover"] {    
+    &.aos-animate {
+        animation: cover1 0.6s forwards;
+    }    
+}
+@keyframes cover1 {
+    0% { transform:scaleX(0); }
+    60% { transform:scaleX(1); }
+    80% { transform:scaleX(1); }
+    100% { transform:scaleX(0); display:none;}
+}
