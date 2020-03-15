@@ -1,0 +1,44 @@
+@import '../styles/globals/mixins.scss';
+
+*:focus { outline: none; }
+
+.wrapper {
+    position: relative; width:100%; 
+}
+.hero-wrap {
+    position: relative; width:100%; height:calc(100vh - 60px); overflow: hidden; 
+    &:after {
+        content:''; position: absolute; width:100%; height: 100%; top:0; left:0;
+        background-color: rgba(0,0,0,0.5);
+    }
+    video {
+        position: absolute; min-width:100%; min-height: 100%; 
+        left:50%; top:50%;
+        transform: translate(-50%, -50%); 
+    }
+    .title-wrap {
+        position: absolute; width: 80vw; bottom: 20vh; left: 6vw; z-index: 5;
+        display: flex; justify-content: end; flex-flow: column; color:#fff;
+        h1 {
+            width:100%; font-size: 10vw; font-family: 'IC Body Bold'; 
+            margin-top: 0.7em; letter-spacing: -0.05em;
+            &:nth-child(1){
+                font-size: 8vw;
+            }
+        }
+    }
+}
+.track-wrap {
+    position: absolute; width: 840px; top: 74vh; right: 20vw;
+    border:1px solid red;
+    svg { position: relative; }
+    .marker {
+        display: block; position: absolute; width: 42px; height: 42px;
+        background-color:#fff; border-radius: 50%; border: 12px solid #ADADAC;
+        right: 260px; top:-16px;
+        &:nth-child(2){
+            right: 38px; top:156px;
+        }
+        
+    }
+}

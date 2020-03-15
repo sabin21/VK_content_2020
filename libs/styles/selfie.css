@@ -1,0 +1,310 @@
+*:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+#map {
+  position: absolute;
+  width: calc(100% - 320px);
+  height: calc(100vh - 60px);
+  left: 0;
+  z-index: -1;
+  overflow: hidden !important;
+}
+
+#map:focus {
+  border: 0px;
+}
+
+.hero-cover {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 60px);
+  z-index: 10;
+  background-color: rgba(207, 47, 92, 0.95);
+  left: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.hero-cover .hero-wrap {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90vw;
+  height: 100%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  color: #fff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.hero-cover .hero-wrap .title-wrap {
+  width: 100%;
+  max-width: 458px;
+  height: 428px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../../img/selfie/hero_title.png);
+}
+
+.hero-cover .hero-wrap .text-wrap {
+  width: 100%;
+  max-width: 400px;
+  margin-left: 6rem;
+}
+
+.hero-cover .hero-wrap .text-wrap p {
+  font-size: 20px;
+  line-height: 1.5em;
+  font-family: 'PT serif';
+}
+
+.hero-cover .hero-wrap .text-wrap .cover-close {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-top: 40px;
+  border-radius: 50px;
+  border: 1px solid #fff;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hero-cover .hero-wrap .text-wrap .cover-close p {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+  font-size: 32px;
+  font-weight: 800;
+  font-family: 'Poppins';
+  line-height: 3em;
+}
+
+.hero-cover .hero-wrap .text-wrap .cover-close .btn-deco-1, .hero-cover .hero-wrap .text-wrap .cover-close .btn-deco-2 {
+  position: absolute;
+  width: 49px;
+  height: 34px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 30px;
+  background-image: url(../../img/selfie/btn_deco.png);
+}
+
+.hero-cover .hero-wrap .text-wrap .cover-close .btn-deco-1 {
+  left: 30px;
+}
+
+.hero-cover .hero-wrap .text-wrap .cover-close .btn-deco-2 {
+  right: 30px;
+}
+
+.hero-cover .hero-wrap .text-wrap .cover-close:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  top: 0;
+  left: -100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.hero-cover .hero-wrap .text-wrap .cover-close:hover:before {
+  left: 0%;
+}
+
+.sub-title {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #cf2f5c;
+  background-image: url(../../img/selfie/hero_title.png);
+  background-size: 70%;
+  left: 20px;
+  top: 80px;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  border: 5px solid #fff;
+  -webkit-box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sub-title:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.marker {
+  position: absolute;
+  border: 2px solid #fff;
+  opacity: 0;
+}
+
+.thumb-wrap {
+  position: absolute;
+  width: 320px;
+  height: calc(100vh - 60px);
+  background-color: #fff;
+  overflow-y: scroll;
+  border-top: 1px solid #E1E5E8;
+  right: 0;
+}
+
+.thumb-wrap .card {
+  position: relative;
+  width: 276px;
+  margin: 22px auto 40px auto;
+}
+
+.thumb-wrap .card a {
+  cursor: pointer;
+}
+
+.thumb-wrap .card img {
+  max-width: 100%;
+}
+
+.thumb-wrap .card .title {
+  font-family: 'PT serif';
+  width: 100%;
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+.thumb-wrap .card .detail {
+  width: 100%;
+  font-size: 14px;
+  color: #5C5C5C;
+  line-height: 1.4em;
+  margin-top: 10px;
+}
+
+.spot-wrap {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  background-color: #F1F4F4;
+  border-top: 1px solid #E1E5E8;
+  overflow-y: scroll;
+}
+
+.spot-wrap .block-1 {
+  position: relative;
+  width: 80vw;
+  height: calc(100vh - 60px);
+  margin: 0 auto;
+}
+
+.spot-wrap .block-1 .pict-wrap {
+  position: absolute;
+  width: 50%;
+  height: 70vh;
+  top: 12vh;
+  background-color: gray;
+}
+
+.spot-wrap .block-1 .text-wrap {
+  position: absolute;
+  width: 38%;
+  height: 70vh;
+  top: 20vh;
+  right: 5%;
+}
+
+.spot-wrap .block-1 .text-wrap .spot-title {
+  width: 100%;
+  font-size: 3.5rem;
+  font-family: 'PT serif';
+  margin-bottom: 1rem;
+  line-height: 1.0em;
+}
+
+.spot-wrap .block-1 .text-wrap .desc {
+  line-height: 1.5em;
+  margin-top: 2rem;
+}
+
+.spot-wrap .vr-wrap {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-color: gray;
+}
+
+#spot-info {
+  position: absolute;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  left: 0;
+  top: 100vh;
+  -webkit-transition: top 0.4s;
+  transition: top 0.4s;
+}
+
+.btn-close {
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border: 1px solid #D9DDDE;
+  -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  top: 90px;
+  right: 40px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  cursor: pointer;
+  display: none;
+}
+
+.btn-close span {
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: #000;
+}
+
+.btn-close span:nth-child(1) {
+  -webkit-transform: translate(10px, -1px) rotate(45deg);
+          transform: translate(10px, -1px) rotate(45deg);
+}
+
+.btn-close span:nth-child(2) {
+  -webkit-transform: translate(10px, -1px) rotate(-45deg);
+          transform: translate(10px, -1px) rotate(-45deg);
+}
+
+.btn-close:hover {
+  background-color: #D72457;
+}
+
+.btn-close:hover span {
+  background-color: #fff;
+}
+/*# sourceMappingURL=selfie.css.map */

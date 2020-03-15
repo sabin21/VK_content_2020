@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Visit Korea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../libs/styles/common.css" />
+    <link rel="stylesheet" href="../libs/styles/vk_theme_common.css">
+    <link rel="stylesheet" href="../libs/styles/selfie.css">
+    <link rel="stylesheet" href="../libs/aos/aos.css">
+    <link rel="stylesheet" href="../libs/mapbox/mapbox-gl.css">
+</head>
+<body>
+
+    <div class="sub-header">
+        <a class="btn-back" href="theme_index.html">
+            <svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+                    <g id="Group-3" transform="translate(2.000000, 8.000000)" stroke="#404040" stroke-width="1.5">
+                        <polyline id="Path" transform="translate(6.000000, 11.500000) rotate(-90.000000) translate(-6.000000, -11.500000) " points="-5 17 6 6 17 17"></polyline>
+                        <line x1="1" y1="11.5" x2="31" y2="11.5" id="Line-2"></line>
+                    </g>
+                </g>
+            </svg>
+        </a>
+        <p class="campaign-title">Inssa Korea</p>
+        <a class="btn-share">
+            <svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Artboard-Copy-7" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Group-8" transform="translate(6.000000, 4.000000)" stroke="#121314" stroke-width="1.4">
+                        <path d="M19,11 C20.6041667,11 21.9375,11 23,11 C24.6568542,11 26,12.3431458 26,14 L26,26 C26,27.6568542 24.6568542,29 23,29 L3,29 C1.34314575,29 0,27.6568542 0,26 L0,14 C0,12.3431458 1.34314575,11 3,11 L7,11" id="Path"></path>
+                        <polyline id="Path" stroke-linejoin="round" points="7 6 13 -3.19744231e-14 19 6"></polyline>
+                        <path d="M13,21 L13,1" id="Path"></path>
+                    </g>
+                </g>
+            </svg>
+        </a>
+    </div>
+
+    <section class="hero-cover">
+        <div class="hero-wrap">
+            <div class="title-wrap" data-aos="fade-right" data-aos-duration = 1000></div>
+            <div class="text-wrap">
+                
+                <p>
+                    In Korea, there are many people who can save 'life photos' 
+                    even if the nation's famous tourist destination is a photo zone. 
+                    Korea's photo zone, where each day is different, 
+                    how can I find it well? VK adds a series of photos of your 
+                    life to each photo spot you will be responsible for, 
+                    and reveals the secrets you won't regret.
+                </p>
+                
+                <a class="cover-close">
+                    <span class="btn-deco-1"></span>
+                    <p>Let's Go</p>
+                    <span class="btn-deco-2"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <div id="map"></div>
+    <div class="sub-title"></div>
+    <div class="thumb-wrap">
+        <div class="card">
+            <a class="thumb-1"><img src="../img/selfie/thumb_1.png"></a>
+            <p class="title">Kkilook House</p>
+            <p class="detail">
+                The Kirk Bakery in Sunhwa-dong, Jung-gu, Seoul has also established itself in Iksun-dong. 
+                We serve delicious bakery menus such as baguettes, pretzel, and croissants, and sweet cakes.
+            </p>
+        </div>
+        <div class="card">
+            <a class="thumb-2"><img src="../img/selfie/thumb_2.png"></a>
+            <p class="title">Meal do</p>
+            <p class="detail">
+                A bakery with a variety of freshly baked breads, cakes and scones. Most of all, it is gaining 
+                popularity as a beautiful photo zone at night. Meet delicious bread and pretty pictures
+            </p>
+        </div>
+        <div class="card">
+            <a class="thumb-3"><img src="../img/selfie/thumb_3.png"></a>
+            <p class="title">Saladaeng Bangkok</p>
+            <p class="detail">
+                Saladaeng Bangkok, a Thai restaurant specializing in Thai cuisine in the middle of Seoul. 
+                Exotic interiors, pretty props and plants combine with Korean traditional hanok to create a special charm.
+            </p>
+        </div>
+        <div class="card">
+            <a class="thumb-4"><img src="../img/selfie/thumb_4.png"></a>
+            <p class="title">Jongno Boutique</p>
+            <p class="detail">
+                Flowering costumes and studios are available, so you can choose your favorite clothes and studios. 
+                Because it is a special outfit, it is essential to plan the pose in advance
+            </p>
+        </div>
+    </div>
+    <iframe id="spot-info" frameborder="0">
+        
+    </iframe>
+    <button class="btn-close">
+        <span></span>
+        <span></span>
+    </button>
+
+    <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>    
+    <script src="https://unpkg.com/three@0.106.2/build/three.min.js"></script>    
+    <script src="https://unpkg.com/three@0.106.2/examples/js/loaders/GLTFLoader.js"></script>    
+    <script src="../libs/aos/aos.js"></script>
+    
+    <script >
+                
+        //===== Data
+        var hotspots = {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'title': 'kkilook house',
+                        'href': 'selfie_spot1.html',
+                        'iconSize': [160, 160]
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [126.990483, 37.573973]
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'title': 'mealdo',
+                        'href': 'selfie_spot2.html',
+                        'iconSize': [160, 160]
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [126.989141, 37.573659]
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'title': 'Saladaeng Bangkok',
+                        'href': 'selfie_spot3.html',
+                        'iconSize': [160, 160]
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [126.989918, 37.573852]
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'title': 'Jongro butique',
+                        'href': 'selfie_spot4.html',
+                        'iconSize': [160, 160]
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [126.991042, 37.574965]
+                    }
+                }
+            ]
+        };
+        
+
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2FiaW4yMSIsImEiOiJjanJ1N3I2ZmUxMTJoM3lxc3hzeXI0eDdkIn0.ZC_M7nxk98n9OU21w6Q4WQ';
+        var map = (window.map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/sabin21/ck7md0s2x1qa71jo3fbdrbamp',
+            zoom: 18,
+            center: [126.990086, 37.573982],
+            pitch: 68,
+            antialias: true,
+            bearing: 0
+        }));
+
+        var modelOrigin1 = [126.991028, 37.574865];
+        var modelAltitude = 0;
+        var modelRotate = [Math.PI / 2, 0, 0];
+
+        var modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
+            modelOrigin1,
+            modelAltitude
+        );
+
+        // transformation parameters to position, rotate and scale the 3D model onto the map
+        var modelTransform = {
+            translateX: modelAsMercatorCoordinate.x,
+            translateY: modelAsMercatorCoordinate.y,
+            translateZ: modelAsMercatorCoordinate.z,
+            rotateX: modelRotate[0],
+            rotateY: modelRotate[1],
+            rotateZ: modelRotate[2],
+            scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
+        };
+
+        var THREE1 = window.THREE;
+
+        // configuration of the custom layer for a 3D model per the CustomLayerInterface
+        var customLayer = {
+            id: '3d-model',
+            type: 'custom',
+            renderingMode: '3d',
+            onAdd: function(map, gl) {
+                this.camera = new THREE.Camera();
+                this.scene = new THREE.Scene();
+
+                var directionalLight = new THREE.DirectionalLight(0xffffff);
+                directionalLight.position.set(0, 100, 100).normalize();
+                directionalLight.intensity = 0.5;
+                this.scene.add(directionalLight);
+
+                var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
+                hemiLight.color.setRGB( 0.8, 0.8, 0.95 );
+                hemiLight.groundColor.setRGB( 0.8, 0.8, 0.8 );
+                hemiLight.position.set( 0, 200, 0 );
+                this.scene.add( hemiLight );
+
+                // use the three.js GLTF loader to add the 3D model to the three.js scene
+                var loader1 = new THREE.GLTFLoader();
+                var loader2 = new THREE.GLTFLoader();
+                loader1.load(
+                    '../models/iksun2.gltf',
+                    function(gltf) {
+                        this.scene.add(gltf.scene);
+                        gltf.scene.scale.set(4,4,4);
+                        gltf.scene.rotateY(-1.1);
+                    }.bind(this)
+                );
+                this.map = map;
+
+                // use the Mapbox GL JS map canvas for three.js
+                this.renderer = new THREE.WebGLRenderer({
+                    canvas: map.getCanvas(),
+                    context: gl,
+                    antialias: true
+                });
+
+                this.renderer.autoClear = false;
+            },
+            render: function(gl, matrix) {
+                var rotationX = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(1, 0, 0),
+                    modelTransform.rotateX
+                );
+                var rotationY = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(0, 1, 0),
+                    modelTransform.rotateY
+                );
+                var rotationZ = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(0, 0, 1),
+                    modelTransform.rotateZ
+                );
+
+                var m = new THREE.Matrix4().fromArray(matrix);
+                var l = new THREE.Matrix4()
+                    .makeTranslation(
+                        modelTransform.translateX,
+                        modelTransform.translateY,
+                        modelTransform.translateZ
+                    )
+                    .scale(
+                        new THREE.Vector3(
+                            modelTransform.scale,
+                            -modelTransform.scale,
+                            modelTransform.scale
+                        )
+                    )
+                    .multiply(rotationX)
+                    .multiply(rotationY)
+                    .multiply(rotationZ);
+
+                this.camera.projectionMatrix = m.multiply(l);
+                this.renderer.state.reset();
+                this.renderer.render(this.scene, this.camera);
+                this.map.triggerRepaint();                
+            }
+        };
+
+        map.on('load', function() {
+            map.addLayer(customLayer);
+            /*
+            var layers = map.getStyle().layers;
+
+            var labelLayerId;
+            for (var i = 0; i < layers.length; i++) {
+                if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+                    labelLayerId = layers[i].id;
+                    break;
+                }
+            }*/
+            map.addSource("places", {
+                "type": "geojson",
+                "data": hotspots
+            });           
+        });
+
+        // add markers to map
+        hotspots.features.forEach(function(marker, i) {
+                
+            var el = document.createElement('div');
+            
+            el.className = 'marker';
+            
+            el.id = 'marker' + i;
+            el.style.backgroundImage =
+                'url(https://placekitten.com/g/' +
+                marker.properties.iconSize.join('/') +
+                '/)';
+            el.style.width = marker.properties.iconSize[0] + 'px';
+            el.style.height = marker.properties.iconSize[1] + 'px';
+
+            el.addEventListener('click', function() {
+                setTimeout(()=>{
+                    $('.btn-close').css('display','block');
+                }, 300);
+                $('#spot-info').css('top','60px');                
+                $('#spot-info').attr('src', marker.properties.href);
+            });
+
+            new mapboxgl.Marker(el, {offset: [0, 0]})
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
+        });
+        
+        
+    </script>
+    <script>
+        AOS.init();
+
+        var coverBtn = $('.cover-close');
+        var subTitle = $('.sub-title');
+        coverBtn.on('click', ()=>{
+            $('.hero-cover').css('left','-100vw');
+        });
+        subTitle.on('click', ()=>{
+            $('.hero-cover').css('left','0');
+        });
+        $('.btn-close').on('click', ()=>{
+            $('#spot-info').css('top','100vh');
+            $('.btn-close').css('display','none');
+        });        
+    </script>
+    
+    
+</body>
+</html>

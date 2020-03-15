@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Visit Korea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../libs/styles/common.css" />
+    <link rel="stylesheet" href="../libs/styles/vk_theme_common.css">
+    <link rel="stylesheet" href="../libs/styles/theme_map.css">
+    <link rel="stylesheet" href="../libs/aos/aos.css">
+</head>
+<body>
+    <div class="sub-header"></div>
+    <section class="hero-cover">
+        <div class="hero-wrap">
+            <div class="title-wrap" data-aos="fade-right" data-aos-duration = 1000></div>
+            <div class="text-wrap">
+                <span class="line-up"></span>
+                <p>
+                    In Korea, there are many people who can save 'life photos' 
+                    even if the nation's famous tourist destination is a photo zone. 
+                    Korea's photo zone, where each day is different, 
+                    how can I find it well? VK adds a series of photos of your 
+                    life to each photo spot you will be responsible for, 
+                    and reveals the secrets you won't regret.
+                </p>
+                <span class="line-down"></span>
+                <a class="cover-close"><p>Let's Start</p></a>
+            </div>
+        </div>
+    </section>
+    <div id="map">
+    </div>
+
+    <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/three@0.106.2/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.106.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="../libs/aos/aos.js"></script>
+    
+
+    <script type="module">
+        import { EffectComposer } from '../libs/threejs/examples/jsm/postprocessing/EffectComposer.js';
+        import { RenderPass } from '../libs/threejs/examples/jsm/postprocessing/RenderPass.js';
+        import { BokehPass } from '../libs/threejs/examples/jsm/postprocessing/BokehPass.js';
+        
+        //===== Data
+        var hotspots = {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'title': 'kkilook house',
+                        'message': 'Foo',
+                        'iconSize': [60, 60],
+                        "marker-color": "#7e7e7e",
+                        "marker-size": "medium",
+                        "marker-symbol": "park"
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [126.990483, 37.573973]
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'title': 'mealdo',
+                        'message': 'Bar',
+                        'iconSize': [60, 60],
+                        "marker-color": "#7e7e7e",
+                        "marker-size": "medium",
+                        "marker-symbol": "park"
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [126.989141, 37.573659]
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'title': 'Saladaeng Bangkok',
+                        'message': 'Baz',
+                        'iconSize': [60, 60],
+                        "marker-color": "#7e7e7e",
+                        "marker-size": "medium",
+                        "marker-symbol": "park"
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [126.989918, 37.573852]
+                    }
+                },
+                {
+                    'type': 'Feature',
+                    'properties': {
+                        'title': 'Jongro butique',
+                        'message': 'Baz',
+                        'iconSize': [60, 60],
+                        "marker-color": "#7e7e7e",
+                        "marker-size": "medium",
+                        "marker-symbol": "park"
+                    },
+                    'geometry': {
+                        'type': 'Point',
+                        'coordinates': [126.991042, 37.574965]
+                    }
+                }
+            ]
+        };
+        
+
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2FiaW4yMSIsImEiOiJjanJ1N3I2ZmUxMTJoM3lxc3hzeXI0eDdkIn0.ZC_M7nxk98n9OU21w6Q4WQ';
+        var map = (window.map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/sabin21/ck7md0s2x1qa71jo3fbdrbamp',
+            zoom: 18,
+            center: [126.990086, 37.573982],
+            pitch: 68,
+            antialias: true
+        }));
+
+        var modelOrigin1 = [126.991028, 37.574865];
+        var modelAltitude = 0;
+        var modelRotate = [Math.PI / 2, 0, 0];
+
+        var modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
+            modelOrigin1,
+            modelAltitude
+        );
+
+        // transformation parameters to position, rotate and scale the 3D model onto the map
+        var modelTransform = {
+            translateX: modelAsMercatorCoordinate.x,
+            translateY: modelAsMercatorCoordinate.y,
+            translateZ: modelAsMercatorCoordinate.z,
+            rotateX: modelRotate[0],
+            rotateY: modelRotate[1],
+            rotateZ: modelRotate[2],
+            scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
+        };
+
+        var THREE = window.THREE;
+
+        // configuration of the custom layer for a 3D model per the CustomLayerInterface
+        var customLayer = {
+            id: '3d-model',
+            type: 'custom',
+            renderingMode: '3d',
+            onAdd: function(map, gl) {
+                this.camera = new THREE.Camera();
+                this.scene = new THREE.Scene();
+
+                var directionalLight = new THREE.DirectionalLight(0xffffff);
+                directionalLight.position.set(0, -70, 100).normalize();
+                directionalLight.intensity = 0.5;
+                this.scene.add(directionalLight);
+
+                var directionalLight2 = new THREE.DirectionalLight(0xffffff);
+                directionalLight2.position.set(0, 100000, 1000).normalize();
+                directionalLight2.intensity = 1;
+                //this.scene.add(directionalLight2);
+
+                var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 );
+                hemiLight.color.setHSL( 0.02, 0.1, 0.6 );
+                hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+                hemiLight.position.set( 0, 50, 0 );
+                this.scene.add( hemiLight );
+
+                // use the three.js GLTF loader to add the 3D model to the three.js scene
+                var loader1 = new THREE.GLTFLoader();
+                var loader2 = new THREE.GLTFLoader();
+                loader1.load(
+                    '../models/iksun2.gltf',
+                    function(gltf) {
+                        this.scene.add(gltf.scene);
+                        gltf.scene.scale.set(4,4,4);
+                        gltf.scene.rotateY(-1.1);
+                    }.bind(this)
+                );
+                this.map = map;
+
+                // use the Mapbox GL JS map canvas for three.js
+                this.renderer = new THREE.WebGLRenderer({
+                    canvas: map.getCanvas(),
+                    context: gl,
+                    antialias: true
+                });
+
+                this.renderer.autoClear = false;
+            },
+            render: function(gl, matrix) {
+                var rotationX = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(1, 0, 0),
+                    modelTransform.rotateX
+                );
+                var rotationY = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(0, 1, 0),
+                    modelTransform.rotateY
+                );
+                var rotationZ = new THREE.Matrix4().makeRotationAxis(
+                    new THREE.Vector3(0, 0, 1),
+                    modelTransform.rotateZ
+                );
+
+                var m = new THREE.Matrix4().fromArray(matrix);
+                var l = new THREE.Matrix4()
+                    .makeTranslation(
+                        modelTransform.translateX,
+                        modelTransform.translateY,
+                        modelTransform.translateZ
+                    )
+                    .scale(
+                        new THREE.Vector3(
+                            modelTransform.scale,
+                            -modelTransform.scale,
+                            modelTransform.scale
+                        )
+                    )
+                    .multiply(rotationX)
+                    .multiply(rotationY)
+                    .multiply(rotationZ);
+
+                this.camera.projectionMatrix = m.multiply(l);
+                this.renderer.state.reset();
+                this.renderer.render(this.scene, this.camera);
+                this.map.triggerRepaint();
+                
+            }
+        };
+
+
+
+        map.on('load', function() {
+            map.addLayer(customLayer);
+            /*
+            var layers = map.getStyle().layers;
+
+            var labelLayerId;
+            for (var i = 0; i < layers.length; i++) {
+                if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+                    labelLayerId = layers[i].id;
+                    break;
+                }
+            }*/
+            map.addSource("places", {
+                "type": "geojson",
+                "data": hotspots
+            });           
+        });
+
+        // add markers to map
+        hotspots.features.forEach(function(marker, i) {
+                
+            var el = document.createElement('div');
+            el.className = 'marker';
+            el.style.backgroundImage =
+                'url(https://placekitten.com/g/' +
+                marker.properties.iconSize.join('/') +
+                '/)';
+            el.style.width = marker.properties.iconSize[0] + 'px';
+            el.style.height = marker.properties.iconSize[1] + 'px';
+
+            el.addEventListener('click', function() {
+                window.alert(marker.properties.message);
+            });
+
+            // add marker to map
+            new mapboxgl.Marker(el, {offset: [0, 0]})
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
+        });
+        
+        
+    </script>
+    <script>
+        AOS.init();
+
+        var coverBtn = $('.cover-close');
+        coverBtn.on('click', ()=>{
+            $('.hero-cover').css('left','-100vw');
+        });
+        
+    </script>
+</body>
+</html>

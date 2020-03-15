@@ -1,0 +1,96 @@
+*:focus {
+  outline: none;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hero-wrap {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.hero-wrap:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-wrap video {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.hero-wrap .title-wrap {
+  position: absolute;
+  width: 80vw;
+  bottom: 20vh;
+  left: 6vw;
+  z-index: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  color: #fff;
+}
+
+.hero-wrap .title-wrap h1 {
+  width: 100%;
+  font-size: 10vw;
+  font-family: 'IC Body Bold';
+  margin-top: 0.7em;
+  letter-spacing: -0.05em;
+}
+
+.hero-wrap .title-wrap h1:nth-child(1) {
+  font-size: 8vw;
+}
+
+.track-wrap {
+  position: absolute;
+  width: 840px;
+  top: 74vh;
+  right: 20vw;
+  border: 1px solid red;
+}
+
+.track-wrap svg {
+  position: relative;
+}
+
+.track-wrap .marker {
+  display: block;
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 12px solid #ADADAC;
+  right: 260px;
+  top: -16px;
+}
+
+.track-wrap .marker:nth-child(2) {
+  right: 38px;
+  top: 156px;
+}
+/*# sourceMappingURL=metro.css.map */
