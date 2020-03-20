@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Visit Korea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../libs/styles/common.css" />
+    <link rel="stylesheet" href="../libs/styles/vk_theme_common.css">
+    <link rel="stylesheet" href="../libs/styles/inssa_test.css">
+</head>
+<body>
+
+    <div class="sub-header">
+        <a class="btn-back" href="theme_index.html">
+            <svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+                    <g id="Group-3" transform="translate(2.000000, 8.000000)" stroke="#404040" stroke-width="1.5">
+                        <polyline id="Path" transform="translate(6.000000, 11.500000) rotate(-90.000000) translate(-6.000000, -11.500000) " points="-5 17 6 6 17 17"></polyline>
+                        <line x1="1" y1="11.5" x2="31" y2="11.5" id="Line-2"></line>
+                    </g>
+                </g>
+            </svg>
+        </a>
+        <p class="campaign-title">Inssa Korea</p>
+        <a class="btn-share">
+            <svg width="38px" height="38px" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g id="Artboard-Copy-7" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Group-8" transform="translate(6.000000, 4.000000)" stroke="#121314" stroke-width="1.4">
+                        <path d="M19,11 C20.6041667,11 21.9375,11 23,11 C24.6568542,11 26,12.3431458 26,14 L26,26 C26,27.6568542 24.6568542,29 23,29 L3,29 C1.34314575,29 0,27.6568542 0,26 L0,14 C0,12.3431458 1.34314575,11 3,11 L7,11" id="Path"></path>
+                        <polyline id="Path" stroke-linejoin="round" points="7 6 13 -3.19744231e-14 19 6"></polyline>
+                        <path d="M13,21 L13,1" id="Path"></path>
+                    </g>
+                </g>
+            </svg>
+        </a>
+    </div>
+
+    <iframe id="test-wrap" frameborder="0">
+
+    </iframe>
+
+
+    <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $('#test-wrap').attr('src', './inssa_test/test_1.html');
+        });
+        /*
+        var coverBtn = $('.cover-close');
+        var subTitle = $('.sub-title');
+        coverBtn.on('click', ()=>{
+            $('.hero-cover').css('left','-100vw');
+        });
+        subTitle.on('click', ()=>{
+            $('.hero-cover').css('left','0');
+        });
+        $('.btn-close').on('click', ()=>{
+            $('#spot-info').css('top','100vh');
+            $('.btn-close').css('display','none');
+        }); 
+        */       
+    </script>
+    
+    
+</body>
+</html>

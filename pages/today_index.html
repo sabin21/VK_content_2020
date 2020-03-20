@@ -40,7 +40,9 @@
     </div>
 
     <div class="wrapper">
-
+        <div class="today-logo">
+            <img src="../img/today/today_logo.png">
+        </div>
     <header class="header" data-active="1">
         <div class="header__left">
         <div class="number">
@@ -64,49 +66,31 @@
                     <span>M</span><span>a</span><span>k</span><span>g</span><span>e</span><span>o</span><span>l</span><span>l</span><span>i</span>
                 </div>
             </div>
-            <div class="slide" data-slide="3">
-                <div class="title__super">Curisine & Wine</div>
-                <div class="title__big">
-                    <span>J</span><span>e</span><span>o</span><span>n</span><span>j</span><span>u</span>
-                    <span>M</span><span>a</span><span>k</span><span>g</span><span>e</span><span>o</span><span>l</span><span>l</span><span>i</span>
-                </div>
-            </div>
-            <div class="slide" data-slide="4">
-                <div class="title__super">Curisine & Wine</div>
-                <div class="title__big">
-                    <span>J</span><span>e</span><span>o</span><span>n</span><span>j</span><span>u</span>
-                    <span>M</span><span>a</span><span>k</span><span>g</span><span>e</span><span>o</span><span>l</span><span>l</span><span>i</span>
-                </div>
-            </div>
         </div>
         <div class="content">
             <div class="slide" data-slide="1">
                 <div class="content__blurb">
                     It is a Makgeolli house in an alley of Jeonju Market. On a rainy day, 
                     Koreans think of 'pajeon makgeolli in rice wine'. I'll be waiting.
+                    <p class="sub-title">Location</p>
+                    <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
+                    <p class="sub-title">Curisine & Wine</p>
+                    <p class="desc">Makgeolli, Seafood Pajeon</p>
+                    <p class="sub-title">Address</p>
+                    <p class="desc">14 Nambu Market-gil, Jeonju</p>
                 </div>
-                <a class="content__link">View<span> Detail</span></a>
+                
             </div>
             <div class="slide" data-slide="2">
                 <div class="content__blurb">
                     It is a Makgeolli house in an alley of Jeonju Market. On a rainy day, 
                     Koreans think of 'pajeon makgeolli in rice wine'. I'll be waiting.
+                    <p class="sub-title">Location</p>
+                    <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
+                    <p class="sub-title">Location</p>
+                    <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
                 </div>
-                <a class="content__link">View<span> Detail</span></a>
-            </div>
-            <div class="slide" data-slide="3">
-                <div class="content__blurb">
-                    It is a Makgeolli house in an alley of Jeonju Market. On a rainy day, 
-                    Koreans think of 'pajeon makgeolli in rice wine'. I'll be waiting.
-                </div>
-                <a class="content__link">View<span> Detail</span></a>
-            </div>
-            <div class="slide" data-slide="4">
-                <div class="content__blurb">
-                    It is a Makgeolli house in an alley of Jeonju Market. On a rainy day, 
-                    Koreans think of 'pajeon makgeolli in rice wine'. I'll be waiting.
-                </div>
-                <a class="content__link">View<span> Detail</span></a>
+                
             </div>
         </div>
         </div>
@@ -119,25 +103,20 @@
             <div class="slide" data-slide="2">
                 <video class="video__one" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/908370/swan.mp4" muted loop></video>
             </div>
-            <div class="slide" data-slide="3">
-                <video class="video__one" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/908370/jungle.mp4" muted loop></video>
-            </div>
-            <div class="slide" data-slide="4">
-                <video class="video__one" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/908370/jelly.mp4" muted loop></video>
-            </div>
-            </div>
+            
             
         </div>
         <div class="controls">
             <div class="controls__prev"></div>
-            <div class="controls__indicator"><span>1</span> / 4</div>
+            <div class="controls__indicator"><span>1</span> / 50</div>
             <div class="controls__next"></div>
         </div>
         </div>
     </header>
 
     <div class="contents-wrap">
-        <img src="../img/today_content_1.png" style="max-width:100%; margin: 80px 0">
+        <img src="../img/today/content_1_1.png">
+        <img src="../img/today/content_1_2.png" class="second">
     </div>
 
 </div><!-- wrapper end -->
@@ -154,13 +133,12 @@
     $(document).ready(init);
 
     var active = 0;
-    var count = 4;
+    var count = 2;
 
     function init(){
         $('video')[0].addEventListener('loadeddata', function(){
             $('.controls__next').click(nextSlide);
             $('.controls__prev').click(prevSlide);
-            $('.content__link').click(reEnter);	
             $('body').addClass('is-loaded');
             setTimeout(function(){
                 goToSlide(1);	
@@ -232,10 +210,7 @@
 
 
     function fadeVideos($primary, $slide){
-        //withVideo($secondary,function(video){ 
-        //	video.style.zIndex = 1;
-        //	$(video).fadeOut(1000);
-        //})	
+        	
         withVideo($primary,function(video){ 
             video.currentTime = 0;
             video.style.zIndex = 0;

@@ -113,50 +113,16 @@ body{ @include variable-font-size(16px); font-family: $serif; }
 	width: 476px; margin-top: 4rem; height: 29rem; position: relative; opacity: 0;
 	&__blurb{
 		width: 400px; line-height: 1.5; position: absolute; opacity: 0; left: 40px;
-		transition: opacity $t*2 linear; font-size: 20px;
-	}
-	&__link{
-		line-height: 12rem; position: absolute; bottom: 0; left: 36px;
-		@include variable-font-size(20px);
-		font-family: $sans; font-weight: 700; padding-left: 6rem;
-		cursor: pointer;
-		opacity: 0;
-		transition: color $t linear, opacity 1ms $t*2 steps(1);
-		z-index: 1;
-		span{
-			position: relative; display: inline-block; opacity: 0;
-			transform: translatey(-2rem);
-			transition: opacity $t*2 linear, transform $t*2 $ease-in;
+		transition: opacity $t*2 linear; font-size: 18px;
+		.sub-title {
+			font-size: 12px; font-family: 'Poppins';
+			text-transform: uppercase; font-weight: bold; letter-spacing: 0.2em;
+			margin-top:26px;
 		}
-		&:before, &:after{
-			content: ''; position: absolute; left: 0; top: 50%;
-			transform: translatey(-50%);
-			height: 4rem; width: 4rem; border-radius: 4rem;
+		.desc {
+			font-size: 14px; font-family: 'Poppins';
 		}
-		&:before{
-			background: $aqua;
-			transition: background $t*2 $t linear;
-		}
-		&:after{
-			background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/908370/arrow-right-white.png');
-			background-size: 1rem auto;
-			background-position: center;
-			background-repeat: no-repeat;
-			@keyframes drive{
-				0%{ transform: translatey(-50%) translateX(0rem); animation-timing-function: $ease-in;}
-				40%{ transform: translatey(-50%) translateX(2.5rem); animation-timing-function: steps(1);}
-				60%{ transform: translatey(-50%) translateX(-2.5rem); animation-timing-function: $ease-out;}
-				100%{ transform: translatey(-50%) translateX(0rem);}
-			}
-		}
-		&:hover{
-			&:after{
-				animation: drive 7*$t;
-			}
-			color: $aqua;
-		}
-	}
-	
+	}		
 }
 
 .video{
@@ -178,15 +144,15 @@ body{ @include variable-font-size(16px); font-family: $serif; }
 }
 
 .controls{
-	position: absolute; width: calc(50% - 18px); height: 12rem; bottom: 0;
+	position: absolute; width: calc(50% - 18px); height: 11rem; bottom: 0;
 	right: 0; background: white; text-align: center;
 	z-index: 3; opacity: 0;
 	&__next, &__prev, &__indicator{
 		width: 12rem; height: 100%; display: inline-block; max-width: 30%;
 	}
 	&__next, &__prev{
-		background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/908370/arrow-right-grey.png');
-		background-size: 1rem auto; background-position: center; background-repeat: no-repeat;
+		background-image: url('../../img/today/arrow_right.svg');
+		background-size: 1.75rem auto; background-position: center; background-repeat: no-repeat;
 		cursor: pointer;
 		transition: background $ease-out $t*2;
 		opacity: 0.75;
@@ -206,7 +172,7 @@ body{ @include variable-font-size(16px); font-family: $serif; }
 		color: $grey;
 		@include variable-font-size(12px);
 		font-weight: 500;
-		line-height: 13rem;
+		line-height: 12rem;
 		vertical-align: top;
 		opacity: 0.65;
 	}
@@ -316,13 +282,17 @@ body{ @include variable-font-size(16px); font-family: $serif; }
 .nav, .controls, .content{
 	transition: opacity $t*2 $t*10 linear, transform $t*2 $t*10 $ease-in;
 }
+.today-logo {
+	position: absolute; width: 184px; left: 60px; top: -24px;
+	img{ max-width: 100%;}
+}
 .contents-wrap {
-    width:100%; margin-top: 100px; border-top: 1px solid gray;
-    .cards-wrap {
-        width:100%; display: flex; margin:2rem 0;
-        .card {
-            width: 279px; height: 300px;
-        }
-    }
+    width:100%; margin-top: 120px; 
+    img { 
+		max-width: 100%;
+		&.second {
+			margin: 100px 0;
+		} 
+	}
 }
 

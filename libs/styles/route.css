@@ -42,7 +42,7 @@ body {
   background-color: #000;
   overflow: hidden;
   border-left: 10px solid #fff;
-  background-position: center;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
 }

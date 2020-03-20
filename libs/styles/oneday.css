@@ -197,7 +197,7 @@ canvas {
   cursor: pointer;
   -webkit-transform-origin: top left;
           transform-origin: top left;
-  background-position: center;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
 }

@@ -1,0 +1,96 @@
+*:focus {
+  outline: none;
+}
+
+body {
+  overflow-y: hidden;
+  background-color: #2E209F;
+}
+
+#test-wrap {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 1600px 1000px;
+}
+
+.wrapper .test-logo {
+  position: absolute;
+  width: 100px;
+  height: 68px;
+  top: 60px;
+  left: 70px;
+}
+
+.wrapper .test-logo img {
+  max-width: 100%;
+}
+
+.wrapper.wrap-1 {
+  background-color: #2E209F;
+  background-image: url(../../img/inssa_test/back_1.png);
+}
+
+.wrapper.wrap-1 .front {
+  position: absolute;
+  width: 609px;
+  height: 540px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.wrapper.wrap-1 .front img {
+  max-width: 100%;
+}
+
+.wrapper.wrap-2 {
+  background-color: #2E209F;
+  background-image: url(../../img/inssa_test/back_2.png);
+}
+
+.wrapper.wrap-2 .front {
+  position: absolute;
+  width: 670px;
+  height: 672px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.wrapper.wrap-2 .front img {
+  max-width: 100%;
+}
+
+.wrapper.wrap-3 {
+  background-color: #8D1597;
+  background-image: url(../../img/inssa_test/back_3.png);
+}
+
+.wrapper.wrap-3 .front {
+  position: absolute;
+  width: 734px;
+  height: 672px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.wrapper.wrap-3 .front img {
+  max-width: 100%;
+}
+/*# sourceMappingURL=inssa_test.css.map */
