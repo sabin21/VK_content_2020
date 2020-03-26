@@ -1,107 +1,80 @@
 @import '../styles/globals/mixins.scss';
 
 *:focus { outline: none; }
+/*
 ::-webkit-scrollbar {
     width: 0px; 
   }
-#map {
-    position: absolute; width:calc(100% - 320px); height: calc(100vh - 60px); left:0;
-    &:focus { border:0px;} z-index: -1; overflow: hidden !important;    
-}
+*/
 
 .hero-cover{
-    position: absolute; width:100%; height: calc(100vh - 60px); top:60px;
-    z-index: 10; background-color: rgba(207,47,92,0.95); left:0;
-    transition: all 0.4s; 
+    position: absolute; width:100%; height: 1050px; top:176px;
+    z-index: 10; background-color: #F8ECE5; left:0;
+    //transition: all 0.4s; 
     //display:none;
     .hero-wrap{
-        position: absolute; display: flex; width: 90vw; height: 100%;
+        position: absolute; display: flex; width: 100%; height: 100%;
         margin: auto; left:0; right: 0; color:#fff;
-        align-items: center; justify-content: center;
         .title-wrap{
-            width:100%; max-width: 458px; height: 428px;
+            position: relative; width: 50%; height: 100%;
             @include backImageCover;
-            background-image:url(../../img/selfie/hero_title.png);
+            background-image:url(../../img/selfie/hero_back.png);
         }
-        .text-wrap{
-            width:100%; max-width: 400px; margin-left: 6rem;
-            p {
-                font-size: 20px; line-height: 1.5em;
-                font-family: 'PT serif';
-            }
-            .cover-close {
-                display: block; position: relative; width:100%; height: 100px;
-                margin-top: 40px; border-radius: 50px; border:1px solid #fff;
-                overflow: hidden; cursor: pointer; 
-                p{ 
-                    position: absolute; z-index: 10; text-align: center;  width: 100%;
-                    font-size:32px; font-weight: 800; font-family: 'Poppins'; line-height: 3em; 
-                }
-                .btn-deco-1, .btn-deco-2{
-                    position: absolute; width: 49px; height: 34px;
-                    @include backImageCover; top: 30px;
-                    background-image:url(../../img/selfie/btn_deco.png);
-                }
-                .btn-deco-1 { left: 30px; }
-                .btn-deco-2 { right: 30px; }
-                &:before {
-                    content:''; position: absolute; width:100%;
-                    height:100%; background-color: #000; top:0; left:-100%;
-                    transition: all 0.3s;
-                }
-                &:hover {
-                    &:before {
-                        left:0%;
-                    }
-                }
-            }
+        .hero-right{
+            position: relative; width: 50%; height: 100%;
+            @include backImageCover;
+            background-image:url(../../img/selfie/hero_back_2.png);
         }
-    }
-}
-.sub-title {
-    position: absolute; width:200px; height: 200px; border-radius: 50%;
-    @include backImageCover; background-color: rgba(207,47,92,1); 
-    background-image:url(../../img/selfie/hero_title.png);
-    background-size: 70%; left: 20px; top:80px; cursor: pointer;
-    transition: transform 0.3s; border:5px solid #fff;
-    box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
-    &:hover {
-        transform: scale(1.1);
+        .title-front{
+            position: absolute; margin:auto; width: 500px; height: 732px;
+            left:0; right:0; top:0; bottom: 0;
+            img{ max-width: 100%; box-shadow: 4px 4px 12px rgba(0,0,0,0.1);}
+        }    
     }
 }
 
-// Map Marker
-.marker {
-    position: absolute; border: 2px solid #fff; 
-    opacity: 0;
-}
-
-.thumb-wrap {
-    position: absolute; width:320px; height: calc(100vh - 60px); background-color: #fff;
-    overflow-y: scroll; border-top:1px solid #E1E5E8; right:0;
-    .card {
-        position: relative; width: 276px; margin:22px auto 40px auto; 
-        a{ cursor: pointer;}
-        img { max-width: 100%;}
-        .title {
-            font-family:'PT serif'; width:100%; font-size: 20px;
-            margin-top: 4px;
+.render-wrap{
+    position: absolute; width:100%; height:756px; top: 1226px;
+    background-repeat: no-repeat; background-position: center center;
+    background: linear-gradient(135deg, rgba(253,225,204,1) 0%,rgba(234,201,177,1) 100%);
+    overflow: hidden;
+    border: 18px solid #fff;
+    &.back-3{
+        background-repeat: no-repeat;
+        background-size: 1628px 1027px; background-position: center -240px;
+        background-image:url(../../img/selfie/render_back_3.png);
+    }
+    
+    .click-wrap{
+        position: absolute; width: 850px; height: 400px;
+        top: calc(50% - 210px); left:calc(50% - 300px);
+        .click-btn {
+            position: absolute; width: 150px; height: 280px; display: block; 
+            //border: 1px solid;
+            &.click-1 { top: 45px; left: 145px; }
+            &.click-2 { top: 75px; left: 320px; }
+            &.click-3 { top: -20px; left: 510px; }
+            &.click-4 { top: 70px; left: 665px; }
         }
-        .detail {
-            width:100%; font-size: 14px; color:#5C5C5C; line-height: 1.4em;
-            margin-top: 10px;
-        }
+    }
+    .title-front {
+        position: absolute; width: 354px; height: 510px;
+        top: calc(50% - 250px); left: calc(50% - 540px);
+        img{ max-width: 100%; box-shadow: 4px 4px 12px rgba(0,0,0,0.1);}
     }
 }
 
 //-------------
 .spot-wrap {
-    position: absolute; width:100vw;  
-    background-color: #FFF6F0; border-top:1px solid #E1E5E8; overflow-y: scroll;
+    position: absolute; width:100vw; top: 1984px; 
+    background-color: #FFF6F0; border-top:1px solid #E1E5E8; 
     background-position: top left; background-size:50%; background-repeat: no-repeat;
-    background-image: url(../../img/selfie/back_pict.png); 
+    background-image: url(../../img/selfie/back_pict.png);
+    &#spot-2{ top: 3800px; }
+    &#spot-3{ top: 5616px; }
+    &#spot-4{ top: 7432px; }
     .block-1{
-        position: relative; width: 80vw; max-width: 1160px; height: 100vh; min-height: 1000px; margin:0 auto;
+        position: relative; width: 80vw; max-width: 1160px; min-height: 1000px; margin:0 auto;
         .pict-wrap {
             position: absolute; width: 50%; max-width: 600px; height: 660px; top:15vh; margin:auto;
             border: 15px solid #fff; box-shadow: 8px 8px 8px rgba(0,0,0,0.05);
@@ -130,7 +103,7 @@
     }
     
     .vr-outer{
-        position: relative; width:100%; height: 100vh;
+        position: relative; width:100%; height: 100vh; max-height: 800px;
         overflow: hidden;
         .vr-wrap{
             position: relative; width:100%; height: 100vh;
@@ -138,9 +111,10 @@
     }
     
 }
+
 #spot-info {
-    position: absolute; width:100vw; height: 100vh;
-    left:0; top:100vh; transition: top 0.4s;     
+    position: absolute; width:100vw; height: 2000px;
+    left:0; top:2000px; transition: top 0.4s;     
 }
 .btn-close{
     position: absolute; display: block; width: 60px; height:60px;
@@ -164,3 +138,6 @@
         span { background-color: #fff;}
     }
 }
+
+
+

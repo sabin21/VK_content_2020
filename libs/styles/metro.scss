@@ -7,7 +7,7 @@
     background-color:#F5F1EF; font-family: 'Roboto', sans-serif;
 }
 .hero-wrap {
-    position: relative; width:100%; height:calc(100vh - 60px); overflow: hidden; 
+    position: relative; width:100%; height:calc(100vh - 176px); overflow: hidden;
     &:after {
         content:''; position: absolute; width:100%; height: 100%; top:0; left:0;
         background: linear-gradient(135deg, rgba(211,42,107,1) 0%,rgba(93,54,209,1) 100%);
@@ -19,11 +19,11 @@
         transform: translate(-50%, -50%); 
     }
     .title-wrap {
-        position: absolute; width: 590px; bottom: 94px; left:42px; z-index: 5;
+        position: absolute; width: 620px; bottom: 130px; left:42px; z-index: 5;
         display: flex; justify-content: end; flex-flow: column; color:#fff;     
         p {
-            margin-top: 2rem; font-size: 32px; line-height: 36px;
-            font-weight: bold; font-family: 'Roboto'; 
+            position: absolute; font-size: 32px; line-height: 36px;
+            font-weight: bold; font-family: 'Roboto'; left: 230px; bottom:0; 
         }
         .hero-line {
             position: absolute; top: -153px; left: 306px;
@@ -35,8 +35,16 @@
         }
     }
     .hero-inner{
-        position: relative; width:100%; max-width:1160px; height:calc(100vh - 60px); 
+        position: relative; width:100%; max-width:1160px; height:calc(100vh - 179px); 
         margin:0 auto;
+    }
+    .btn-other {
+        position: absolute; width: 150px; height:42px; top:30px; right:28px;
+        border-radius: 21px; border:1px solid #fff; z-index: 5;
+        color:#fff; font-weight: bold;
+        p{
+            width:100%; text-align: center; line-height: 40px;
+        }
     }
 }
 #hero-title {
@@ -49,7 +57,7 @@
     100%{ stroke-dashoffset: 0; }
 }
 .track-wrap {
-    position: absolute; width: 840px; top: calc(100vh - 230px); right: calc(50% - 478px);
+    position: absolute; width: 840px; top: calc(100vh - 350px); right: calc(50% - 478px);
     #track-base-svg { position: absolute; opacity: 0.7;}
     #track-active-svg { position: absolute; }
     .marker {
@@ -60,7 +68,7 @@
         }      
         &.marker-1{ right: 260px; top:-16px; }
         &.marker-2{ right: 40px; top:150px; }
-        &.marker-3{ right: 338px; top:310px; }
+        &.marker-3{ right: 290px; top:310px; }
         &.marker-4{ right: 638px; top:310px; }
         &.marker-5{ right: 812px; top:520px; }
         &.marker-6{ right: 812px; top:1500px; }
@@ -81,6 +89,8 @@
         &.marker-big-1{ right: 252px; top:706px; }
         &.marker-big-2{ right: 252px; top:1650px; }
         &.marker-big-3{ right: 252px; top:2564px; }
+        &.marker-big-4{ right: 252px; top:3450px; }
+        &.marker-big-5{ right: 252px; top:4270px; }
     }
     .desc {
         position: absolute; width: 450px; font-size: 18px; font-family: 'Poppins';
@@ -89,18 +99,31 @@
         }
     }
 }
+.deco-wrap {
+    position: absolute; width: 1025px; height: 4000px;
+    background-size: 100%; background-repeat: no-repeat;
+    top: calc(100vh - 104px); left: calc(50% - 520px);
+    background-image: url(../../img/metro/deco.png);
+}
 .cards-wrap{
     position: absolute; width: 100%; max-width: 964px; margin:auto; 
     left:calc(50% - 456px); top: 100vh;
     .card {
-        position: absolute; width: 100%; max-width: 448px; height: 506px; 
+        position: absolute; width: 100%; max-width: 448px; height: 516px; 
         background-color:#fff; box-shadow: 6px 6px 10px rgba(0,0,0,0.1);
-        margin: auto; overflow: hidden; border-radius: 10px;
+        margin: auto; overflow: hidden; border-radius: 14px;
         .pict-wrap{
             position: relative; width:100%; height: 286px;
             background-color:gray; @include backImageCover;
-            border: 14px solid #fff;
-            &.pict-1 { background:url(../../img/metro/pict_1.png); }
+            border: 18px solid #fff; 
+            &.pict-1 { background-image:url(../../img/metro/pict_1.png); }
+            &.pict-2 { background-image:url(../../img/metro/pict_2.png); }
+            &.pict-3 { background-image:url(../../img/metro/pict_3.png); }
+            &.pict-4 { background-image:url(../../img/metro/pict_4.png); }
+            &.pict-5 { background-image:url(../../img/metro/pict_5.png); }
+            &.pict-6 { background-image:url(../../img/metro/pict_6.png); }
+            &.pict-7 { background-image:url(../../img/metro/pict_7.png); }
+            &.pict-8 { background-image:url(../../img/metro/pict_8.png); }
         }
         .title { 
             font-family: 'Poppins'; font-size: 22px; margin: 10px 0 0 32px;
@@ -110,10 +133,14 @@
             width: 85%; font-size: 16px; margin: 12px 0 0 32px; line-height: 1.55em;
             color:#5A6165;
         }
-        &.card-1{ top: 650px; left:0; right:0; }
-        &.card-2{ top: 1600px; left:20px; }
-        &.card-3{ top: 1600px; right:20px; }
-        &.card-4{ top: 2510px; left:20px; }
-        &.card-5{ top: 2510px; right:20px; }
+        &.card-1{ top: 550px; left:0; right:0; }
+        &.card-2{ top: 1500px; left:20px; }
+        &.card-3{ top: 1500px; right:20px; }
+        &.card-4{ top: 2410px; left:20px; }
+        &.card-5{ top: 2410px; right:20px; }
+        &.card-6{ top: 3310px; left:0; right:0; }
+        &.card-7{ top: 4130px; left:20px; }
+        &.card-8{ top: 4130px; right:20px; }
+
     }
 }

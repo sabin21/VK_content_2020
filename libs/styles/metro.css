@@ -13,7 +13,7 @@
 .hero-wrap {
   position: relative;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 176px);
   overflow: hidden;
 }
 
@@ -40,8 +40,8 @@
 
 .hero-wrap .title-wrap {
   position: absolute;
-  width: 590px;
-  bottom: 94px;
+  width: 620px;
+  bottom: 130px;
   left: 42px;
   z-index: 5;
   display: -webkit-box;
@@ -58,11 +58,13 @@
 }
 
 .hero-wrap .title-wrap p {
-  margin-top: 2rem;
+  position: absolute;
   font-size: 32px;
   line-height: 36px;
   font-weight: bold;
   font-family: 'Roboto';
+  left: 230px;
+  bottom: 0;
 }
 
 .hero-wrap .title-wrap .hero-line {
@@ -83,8 +85,27 @@
   position: relative;
   width: 100%;
   max-width: 1160px;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 179px);
   margin: 0 auto;
+}
+
+.hero-wrap .btn-other {
+  position: absolute;
+  width: 150px;
+  height: 42px;
+  top: 30px;
+  right: 28px;
+  border-radius: 21px;
+  border: 1px solid #fff;
+  z-index: 5;
+  color: #fff;
+  font-weight: bold;
+}
+
+.hero-wrap .btn-other p {
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
 }
 
 #hero-title {
@@ -115,7 +136,7 @@
 .track-wrap {
   position: absolute;
   width: 840px;
-  top: calc(100vh - 230px);
+  top: calc(100vh - 350px);
   right: calc(50% - 478px);
 }
 
@@ -153,7 +174,7 @@
 }
 
 .track-wrap .marker.marker-3 {
-  right: 338px;
+  right: 290px;
   top: 310px;
 }
 
@@ -224,6 +245,16 @@
   top: 2564px;
 }
 
+.track-wrap .marker-big.marker-big-4 {
+  right: 252px;
+  top: 3450px;
+}
+
+.track-wrap .marker-big.marker-big-5 {
+  right: 252px;
+  top: 4270px;
+}
+
 .track-wrap .desc {
   position: absolute;
   width: 450px;
@@ -234,6 +265,17 @@
 .track-wrap .desc.desc-1 {
   top: 470px;
   left: 160px;
+}
+
+.deco-wrap {
+  position: absolute;
+  width: 1025px;
+  height: 4000px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  top: calc(100vh - 104px);
+  left: calc(50% - 520px);
+  background-image: url(../../img/metro/deco.png);
 }
 
 .cards-wrap {
@@ -249,13 +291,13 @@
   position: absolute;
   width: 100%;
   max-width: 448px;
-  height: 506px;
+  height: 516px;
   background-color: #fff;
   -webkit-box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1);
   margin: auto;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 14px;
 }
 
 .cards-wrap .card .pict-wrap {
@@ -266,11 +308,39 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  border: 14px solid #fff;
+  border: 18px solid #fff;
 }
 
 .cards-wrap .card .pict-wrap.pict-1 {
-  background: url(../../img/metro/pict_1.png);
+  background-image: url(../../img/metro/pict_1.png);
+}
+
+.cards-wrap .card .pict-wrap.pict-2 {
+  background-image: url(../../img/metro/pict_2.png);
+}
+
+.cards-wrap .card .pict-wrap.pict-3 {
+  background-image: url(../../img/metro/pict_3.png);
+}
+
+.cards-wrap .card .pict-wrap.pict-4 {
+  background-image: url(../../img/metro/pict_4.png);
+}
+
+.cards-wrap .card .pict-wrap.pict-5 {
+  background-image: url(../../img/metro/pict_5.png);
+}
+
+.cards-wrap .card .pict-wrap.pict-6 {
+  background-image: url(../../img/metro/pict_6.png);
+}
+
+.cards-wrap .card .pict-wrap.pict-7 {
+  background-image: url(../../img/metro/pict_7.png);
+}
+
+.cards-wrap .card .pict-wrap.pict-8 {
+  background-image: url(../../img/metro/pict_8.png);
 }
 
 .cards-wrap .card .title {
@@ -289,28 +359,44 @@
 }
 
 .cards-wrap .card.card-1 {
-  top: 650px;
+  top: 550px;
   left: 0;
   right: 0;
 }
 
 .cards-wrap .card.card-2 {
-  top: 1600px;
+  top: 1500px;
   left: 20px;
 }
 
 .cards-wrap .card.card-3 {
-  top: 1600px;
+  top: 1500px;
   right: 20px;
 }
 
 .cards-wrap .card.card-4 {
-  top: 2510px;
+  top: 2410px;
   left: 20px;
 }
 
 .cards-wrap .card.card-5 {
-  top: 2510px;
+  top: 2410px;
+  right: 20px;
+}
+
+.cards-wrap .card.card-6 {
+  top: 3310px;
+  left: 0;
+  right: 0;
+}
+
+.cards-wrap .card.card-7 {
+  top: 4130px;
+  left: 20px;
+}
+
+.cards-wrap .card.card-8 {
+  top: 4130px;
   right: 20px;
 }
 /*# sourceMappingURL=metro.css.map */

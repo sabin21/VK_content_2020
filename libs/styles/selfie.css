@@ -2,33 +2,19 @@
   outline: none;
 }
 
+/*
 ::-webkit-scrollbar {
-  width: 0px;
-}
-
-#map {
-  position: absolute;
-  width: calc(100% - 320px);
-  height: calc(100vh - 60px);
-  left: 0;
-  z-index: -1;
-  overflow: hidden !important;
-}
-
-#map:focus {
-  border: 0px;
-}
-
+    width: 0px; 
+  }
+*/
 .hero-cover {
   position: absolute;
   width: 100%;
-  height: calc(100vh - 60px);
-  top: 60px;
+  height: 1050px;
+  top: 176px;
   z-index: 10;
-  background-color: rgba(207, 47, 92, 0.95);
+  background-color: #F8ECE5;
   left: 0;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
 }
 
 .hero-cover .hero-wrap {
@@ -36,190 +22,147 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 90vw;
+  width: 100%;
   height: 100%;
   margin: auto;
   left: 0;
   right: 0;
   color: #fff;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .hero-cover .hero-wrap .title-wrap {
-  width: 100%;
-  max-width: 458px;
-  height: 428px;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url(../../img/selfie/hero_title.png);
-}
-
-.hero-cover .hero-wrap .text-wrap {
-  width: 100%;
-  max-width: 400px;
-  margin-left: 6rem;
-}
-
-.hero-cover .hero-wrap .text-wrap p {
-  font-size: 20px;
-  line-height: 1.5em;
-  font-family: 'PT serif';
-}
-
-.hero-cover .hero-wrap .text-wrap .cover-close {
-  display: block;
   position: relative;
-  width: 100%;
-  height: 100px;
-  margin-top: 40px;
-  border-radius: 50px;
-  border: 1px solid #fff;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.hero-cover .hero-wrap .text-wrap .cover-close p {
-  position: absolute;
-  z-index: 10;
-  text-align: center;
-  width: 100%;
-  font-size: 32px;
-  font-weight: 800;
-  font-family: 'Poppins';
-  line-height: 3em;
-}
-
-.hero-cover .hero-wrap .text-wrap .cover-close .btn-deco-1, .hero-cover .hero-wrap .text-wrap .cover-close .btn-deco-2 {
-  position: absolute;
-  width: 49px;
-  height: 34px;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  top: 30px;
-  background-image: url(../../img/selfie/btn_deco.png);
-}
-
-.hero-cover .hero-wrap .text-wrap .cover-close .btn-deco-1 {
-  left: 30px;
-}
-
-.hero-cover .hero-wrap .text-wrap .cover-close .btn-deco-2 {
-  right: 30px;
-}
-
-.hero-cover .hero-wrap .text-wrap .cover-close:before {
-  content: '';
-  position: absolute;
-  width: 100%;
+  width: 50%;
   height: 100%;
-  background-color: #000;
-  top: 0;
-  left: -100%;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.hero-cover .hero-wrap .text-wrap .cover-close:hover:before {
-  left: 0%;
-}
-
-.sub-title {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #cf2f5c;
-  background-image: url(../../img/selfie/hero_title.png);
-  background-size: 70%;
-  left: 20px;
-  top: 80px;
-  cursor: pointer;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
-  border: 5px solid #fff;
-  -webkit-box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-          box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  background-image: url(../../img/selfie/hero_back.png);
 }
 
-.sub-title:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.marker {
-  position: absolute;
-  border: 2px solid #fff;
-  opacity: 0;
-}
-
-.thumb-wrap {
-  position: absolute;
-  width: 320px;
-  height: calc(100vh - 60px);
-  background-color: #fff;
-  overflow-y: scroll;
-  border-top: 1px solid #E1E5E8;
-  right: 0;
-}
-
-.thumb-wrap .card {
+.hero-cover .hero-wrap .hero-right {
   position: relative;
-  width: 276px;
-  margin: 22px auto 40px auto;
+  width: 50%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../../img/selfie/hero_back_2.png);
 }
 
-.thumb-wrap .card a {
-  cursor: pointer;
+.hero-cover .hero-wrap .title-front {
+  position: absolute;
+  margin: auto;
+  width: 500px;
+  height: 732px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
-.thumb-wrap .card img {
+.hero-cover .hero-wrap .title-front img {
   max-width: 100%;
+  -webkit-box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.thumb-wrap .card .title {
-  font-family: 'PT serif';
+.render-wrap {
+  position: absolute;
   width: 100%;
-  font-size: 20px;
-  margin-top: 4px;
+  height: 756px;
+  top: 1226px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background: linear-gradient(135deg, #fde1cc 0%, #eac9b1 100%);
+  overflow: hidden;
+  border: 18px solid #fff;
 }
 
-.thumb-wrap .card .detail {
-  width: 100%;
-  font-size: 14px;
-  color: #5C5C5C;
-  line-height: 1.4em;
-  margin-top: 10px;
+.render-wrap.back-3 {
+  background-repeat: no-repeat;
+  background-size: 1628px 1027px;
+  background-position: center -240px;
+  background-image: url(../../img/selfie/render_back_3.png);
+}
+
+.render-wrap .click-wrap {
+  position: absolute;
+  width: 850px;
+  height: 400px;
+  top: calc(50% - 210px);
+  left: calc(50% - 300px);
+}
+
+.render-wrap .click-wrap .click-btn {
+  position: absolute;
+  width: 150px;
+  height: 280px;
+  display: block;
+}
+
+.render-wrap .click-wrap .click-btn.click-1 {
+  top: 45px;
+  left: 145px;
+}
+
+.render-wrap .click-wrap .click-btn.click-2 {
+  top: 75px;
+  left: 320px;
+}
+
+.render-wrap .click-wrap .click-btn.click-3 {
+  top: -20px;
+  left: 510px;
+}
+
+.render-wrap .click-wrap .click-btn.click-4 {
+  top: 70px;
+  left: 665px;
+}
+
+.render-wrap .title-front {
+  position: absolute;
+  width: 354px;
+  height: 510px;
+  top: calc(50% - 250px);
+  left: calc(50% - 540px);
+}
+
+.render-wrap .title-front img {
+  max-width: 100%;
+  -webkit-box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .spot-wrap {
   position: absolute;
   width: 100vw;
+  top: 1984px;
   background-color: #FFF6F0;
   border-top: 1px solid #E1E5E8;
-  overflow-y: scroll;
   background-position: top left;
   background-size: 50%;
   background-repeat: no-repeat;
   background-image: url(../../img/selfie/back_pict.png);
 }
 
+.spot-wrap#spot-2 {
+  top: 3800px;
+}
+
+.spot-wrap#spot-3 {
+  top: 5616px;
+}
+
+.spot-wrap#spot-4 {
+  top: 7432px;
+}
+
 .spot-wrap .block-1 {
   position: relative;
   width: 80vw;
   max-width: 1160px;
-  height: 100vh;
   min-height: 1000px;
   margin: 0 auto;
 }
@@ -294,6 +237,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  max-height: 800px;
   overflow: hidden;
 }
 
@@ -306,9 +250,9 @@
 #spot-info {
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 2000px;
   left: 0;
-  top: 100vh;
+  top: 2000px;
   -webkit-transition: top 0.4s;
   transition: top 0.4s;
 }

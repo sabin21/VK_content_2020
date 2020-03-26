@@ -2,7 +2,7 @@
 
 *:focus { outline: none; }
 
-body { overflow-y: hidden; background-color:#2E209F;}
+body { background-color:#2E209F;}
 #test-wrap{
     position: relative; width:100%; height: calc(100vh - 60px); 
 }
@@ -39,6 +39,39 @@ body { overflow-y: hidden; background-color:#2E209F;}
     &.wrap-3{
         background-color:#8D1597;
         background-image:url(../../img/inssa_test/back_3.png);
+        .front {
+            position: absolute; width:734px; height: 672px; margin: auto;
+            left:0; right:0; top:0; bottom:0;
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+    &.wrap-4{
+        background-color:#8D1597;
+        background-image:url(../../img/inssa_test/back_4.png);
+        .front {
+            position: absolute; width:734px; height: 672px; margin: auto;
+            left:0; right:0; top:0; bottom:0;
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+    &.wrap-4-1{
+        background-color:#8D1597;
+        background-image:url(../../img/inssa_test/back_4.png);
+        .front {
+            position: absolute; width:734px; height: 672px; margin: auto;
+            left:0; right:0; top:0; bottom:0;
+            img{
+                max-width: 100%;
+            }
+        }
+    }
+    &.wrap-5{
+        background-color:#8D1597;
+        background-image:url(../../img/inssa_test/back_6.jpg);
         .front {
             position: absolute; width:734px; height: 672px; margin: auto;
             left:0; right:0; top:0; bottom:0;

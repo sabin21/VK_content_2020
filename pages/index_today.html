@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Visit Korea</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0 user-scalable=no">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="../libs/styles/common.css" />
+  <link rel="stylesheet" type="text/css" href="../libs/styles/vk_theme_common.css">
+  <link rel="stylesheet" type="text/css" href="../libs/styles/today.css" />
+</head>
+
+<body>
+	
+    <header class="vk-header">
+        <a href="index_vk.html"></a>
+      </header>
+
+    <div class="wrapper">
+        <div class="today-logo">
+            <img src="../img/today/today_logo.png">
+        </div>
+    <header class="header" data-active="1">
+        <div class="header__left">
+        <div class="number">
+            <div class="slide" data-slide="1"></div>
+            <div class="slide" data-slide="2"></div>
+            <div class="slide" data-slide="3"></div>
+            <div class="slide" data-slide="4"></div>
+        </div>
+        <div class="title">
+            <div class="slide" data-slide="1">
+            <div class="title__super">Curisine & Wine</div>
+            <div class="title__big">
+                <span>J</span><span>e</span><span>o</span><span>n</span><span>j</span><span>u</span>
+                <span>M</span><span>a</span><span>k</span><span>g</span><span>e</span><span>o</span><span>l</span><span>l</span><span>i</span>
+            </div>
+            </div>
+            <div class="slide" data-slide="2">
+                <div class="title__super">Curisine & Wine</div>
+                <div class="title__big">
+                    <span>J</span><span>e</span><span>o</span><span>n</span><span>j</span><span>u</span>
+                    <span>M</span><span>a</span><span>k</span><span>g</span><span>e</span><span>o</span><span>l</span><span>l</span><span>i</span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="slide" data-slide="1">
+                <div class="content__blurb">
+                    It is a Makgeolli house in an alley of Jeonju Market. On a rainy day, 
+                    Koreans think of 'pajeon makgeolli in rice wine'. I'll be waiting.
+                    <p class="sub-title">Location</p>
+                    <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
+                    <p class="sub-title">Curisine & Wine</p>
+                    <p class="desc">Makgeolli, Seafood Pajeon</p>
+                    <p class="sub-title">Address</p>
+                    <p class="desc">14 Nambu Market-gil, Jeonju</p>
+                </div>
+                
+            </div>
+            <div class="slide" data-slide="2">
+                <div class="content__blurb">
+                    It is a Makgeolli house in an alley of Jeonju Market. On a rainy day, 
+                    Koreans think of 'pajeon makgeolli in rice wine'. I'll be waiting.
+                    <p class="sub-title">Location</p>
+                    <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
+                    <p class="sub-title">Location</p>
+                    <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+        <div class="header__right">
+        <div class="video">
+            <div class="video__left">
+            <div class="slide" data-slide="1">
+                <video class="video__one" src="../video/jeonju_final.mp4" muted loop></video>
+            </div>
+            <div class="slide" data-slide="2">
+                <video class="video__one" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/908370/swan.mp4" muted loop></video>
+            </div>
+            
+            
+        </div>
+        <div class="controls">
+            <div class="controls__prev"></div>
+            <div class="controls__indicator"><span>1</span> / 50</div>
+            <div class="controls__next"></div>
+        </div>
+        </div>
+    </header>
+
+    <div class="contents-wrap">
+        <img src="../img/today/con_1.png">
+        <div class="video-wrap" id="video-1"></div>
+        <img src="../img/today/con_2.png">
+        <div class="video-wrap" id="video-2"></div>
+        <img src="../img/today/content_1_1.png">
+        <img src="../img/today/content_1_2.png" class="second">
+    </div>
+
+</div><!-- wrapper end -->
+
+<div class="vk-footer"></div>
+
+
+<script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+<script src="../libs/gsap/gsap.min.js"></script>
+<script src="../libs/threejs/three.min.js"></script>
+<script src="../libs/aos/aos.js"></script>
+
+<script>
+    $(document).ready(init());
+
+    var active = 0;
+    var count = 2;
+
+    function init(){
+        $('video')[0].addEventListener('loadeddata', function(){
+            $('.controls__next').click(nextSlide);
+            $('.controls__prev').click(prevSlide);
+            $('body').addClass('is-loaded');
+            setTimeout(function(){
+                goToSlide(1);	
+            },300);
+        })
+    }
+
+    function nextSlide(){
+        var next = active + 1;
+        if (next > count){
+            next = 1;
+        }
+        goToSlide(next);
+    }
+
+    function prevSlide(){
+        prev = active - 1;
+        if (prev < 1 ){
+            prev = count;
+        }
+        goToSlide(prev);
+    }
+
+    function goToSlide(number){
+        $('.slide').removeClass('was-active');
+        $('.slide[data-slide='+active+']').addClass('was-active');
+        stopVideo($('.slide.is-active'));
+        active = number;
+        $('.slide').removeClass('is-active');
+        startVideo($('.slide[data-slide='+number+']'));
+        setTimeout(function(){
+            $('.slide[data-slide='+number+']').addClass('is-active');	
+        },10)
+        $('.controls__indicator span').html(active);
+        $('.header').attr('data-active', active);
+    }
+
+    function stopVideo($slide){
+        withVideo($slide.find('video'),function(video){ 
+            video.pause();
+        })
+    }
+
+    function startVideo($slide){
+        initVideos($slide.find('.video__one'), $slide.find('.video__two'), $slide);
+    }
+
+    function initVideos($primary, $slide){
+        //withVideo($secondary,function(video){ 
+        //	video.currentTime = 0;
+        //	video.style.zIndex = 0;
+        //	video.style.display = 'none';
+        //})	
+        withVideo($primary,function(video){ 
+            video.currentTime = 0;
+            video.style.zIndex = 1;
+            video.style.display = 'block';
+            video.play();	
+            var loop = setTimeout(function(){
+                if ($slide.hasClass('is-active')){
+                    fadeVideos($primary, $slide);
+                } else {
+                    console.log('didnt loop')
+                }
+                clearTimeout(loop);
+            }, 7000);
+        })
+    }
+
+
+    function fadeVideos($primary, $slide){
+        	
+        withVideo($primary,function(video){ 
+            video.currentTime = 0;
+            video.style.zIndex = 0;
+            video.style.display = 'block';
+            video.play();
+            var loop = setTimeout(function(){
+                if ($slide.hasClass('is-active')){
+                    fadeVideos($primary, $slide);
+                } else {
+                    console.log('didnt loop')
+                }
+                clearTimeout(loop);
+            }, 7000);
+        })
+    }
+
+    function withVideo($selector, callback){
+        $selector.each(function(index, video){
+            callback(video);
+        })
+    }
+
+    function reEnter(){
+        $('body').removeClass('is-loaded');
+        goToSlide(4);
+        setTimeout(function(){
+            goToSlide(1);
+            $('body').addClass('is-loaded');
+        }, 2000);
+    }
+</script>
+  
+</body>
+
+  
+</html>

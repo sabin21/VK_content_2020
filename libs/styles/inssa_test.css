@@ -3,7 +3,6 @@
 }
 
 body {
-  overflow-y: hidden;
   background-color: #2E209F;
 }
 
@@ -91,6 +90,66 @@ body {
 }
 
 .wrapper.wrap-3 .front img {
+  max-width: 100%;
+}
+
+.wrapper.wrap-4 {
+  background-color: #8D1597;
+  background-image: url(../../img/inssa_test/back_4.png);
+}
+
+.wrapper.wrap-4 .front {
+  position: absolute;
+  width: 734px;
+  height: 672px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.wrapper.wrap-4 .front img {
+  max-width: 100%;
+}
+
+.wrapper.wrap-4-1 {
+  background-color: #8D1597;
+  background-image: url(../../img/inssa_test/back_4.png);
+}
+
+.wrapper.wrap-4-1 .front {
+  position: absolute;
+  width: 734px;
+  height: 672px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.wrapper.wrap-4-1 .front img {
+  max-width: 100%;
+}
+
+.wrapper.wrap-5 {
+  background-color: #8D1597;
+  background-image: url(../../img/inssa_test/back_6.jpg);
+}
+
+.wrapper.wrap-5 .front {
+  position: absolute;
+  width: 734px;
+  height: 672px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.wrapper.wrap-5 .front img {
   max-width: 100%;
 }
 /*# sourceMappingURL=inssa_test.css.map */
