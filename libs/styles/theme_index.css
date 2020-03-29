@@ -461,6 +461,8 @@ body {
   right: 0;
   top: 611px;
   background-color: #fff;
+  background-image: url(../../img/vk_index_con.png);
+  background-size: cover;
 }
 
 .vk-content-wrap .inssa-wrap a {
