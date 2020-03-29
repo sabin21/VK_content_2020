@@ -88,11 +88,11 @@ canvas {
                 z-index: 11; background-color: #000;
                 transform-origin: top left; animation-direction: normal;
             }
-            &#pict-01 { background-image: url(../../img/mokpo/pict_1.png); }
-            &#pict-02 { background-image: url(../../img/mokpo/gamcheon_1.png); }
-            &#pict-03 { background-image: url(../../img/mokpo/haeundae_1.png); }
-            &#pict-04 { background-image: url(../../img/mokpo/sunset_2.png); }
-            &#pict-05 { background-image: url(../../img/mokpo/market_2.png); }
+            &#pict-01 { background-image: url(../../img/mokpo/pict_1_thumb.png); }
+            &#pict-02 { background-image: url(../../img/mokpo/gamcheon_1_thumb.png); }
+            &#pict-03 { background-image: url(../../img/mokpo/haeundae_1_thumb.png); }
+            &#pict-04 { background-image: url(../../img/mokpo/sunset_2_thumb.png); }
+            &#pict-05 { background-image: url(../../img/mokpo/market_2_thumb.png); }
             .pict { 
                 max-width:100%; object-fit: cover;                
             }

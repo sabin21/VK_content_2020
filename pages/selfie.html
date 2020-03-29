@@ -123,14 +123,28 @@
         </div>        
     </section>
 
-    <!--
-    <iframe id="spot-info" frameborder="0" src="selfie_spot1.html"></iframe>
-    <button class="btn-close">
-        <span></span>
-        <span></span>
-    </button>
-    -->
+    <div class="page-up-btn">
+        <svg width="24px" height="14px" viewBox="0 0 24 14">            
+            <polyline id="Path" stroke="#F76659" fill="none" stroke-width="2" points="3 12 12 3 21 12"></polyline>            
+        </svg>
+    </div>
     <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).on('scroll', function(){
+                if(window.scrollY < 1400){
+                $(".page-up-btn").css('display','none');
+                }else{
+                    $(".page-up-btn").css('display','block');
+                }
+            });
+            
+            $(".page-up-btn").click(function( event ) {
+                event.preventDefault();
+                $("html, body").animate({ scrollTop: $('.render-wrap').offset().top }, 500);
+            });
+        });
+    </script>
     
     <script type="module">
 

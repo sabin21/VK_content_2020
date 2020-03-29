@@ -36,34 +36,6 @@
 
 
 <script>
-/*
-  const TLhero1 = new gsap.timeline();
-  const TLhero2 = new gsap.timeline();
-
-	TLhero1
-  .to(".theme-index-hero-wrap .cover", {height: 0, duration: 0.6})
-  .to(".intro-cut1", {clip: 'rect(0vh 100vw 100vh 0vh)', duration: 0.6})
-  .to(".intro-cut1 .intro-pict", {clip: 'rect(0vh 100vw 100vh 0vh)', duration: 1})
-  .to(".title-wrap h1", {bottom: '200px', duration:0.4},1.2)
-  .to(".intro-cut2", {clip: 'rect(0vh 100vw 100vh 0vh)', duration: 0, delay:1.2})
-  .to(".intro-cut2 .intro-pict", {clip: 'rect(0vh 100vw 100vh 0vh)', duration: 1})
-  .to(".title-wrap h1", {bottom: '340px', duration:0.4},2.8)
-  .to(".intro-cut3", {clip: 'rect(0vh 100vw 100vh 0vh)', duration: 0, delay:1.2})
-  .to(".intro-cut3 .intro-pict", {clip: 'rect(0vh 100vw 100vh 0vh)', duration: 1})
-  .to(".title-wrap h1", {bottom: '480px', duration:0.4},5.2)
-  .to(".intro-wrap", {opacity: 0, duration: 1, onComplete: ()=>{
-    $('.hero-video-wrap video').get(0).play();
-  }})
-  .to(".theme-logo-wrap", { opacity:1, duration: 2})
-  .to(".hero-video-wrap .overlay", { opacity:0.6, duration: 1}, 7);
-
-  AOS.init();
-  
-  document.addEventListener('aos:out', ()=>{
-    TLhero2
-    .to(".theme-index-hero-wrap", {height:0, duration: 0.4});
-  });
-  */
 
     const TlHero = new gsap.timeline({paused: true});
     TlHero

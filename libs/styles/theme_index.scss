@@ -67,23 +67,60 @@ body{
 }
 
 .keyword-wrap {
-    position: relative; width: 100%; height: 220px;
-    border-bottom: 1px solid #E0E7EB; display: flex; overflow: hidden;
-    justify-content: center;
-    .card {
-        width: 170px; height: 200px; margin: 30px 14px 0px 14px;
-        .thumb{
-            width:100%; height: 120px; background-color:gray;
+    position: relative; width: 100%; overflow: hidden;
+    .wrap-1{ 
+        position: relative; 
+        width:100%; height: 170px; border-bottom: 1px solid #E0E7EB;
+        text-align: center;
+        img {
+            width: 1160px; margin-top: 32px;
         }
-        p{
-          font-size: 14px; margin-top: 10px; line-height: 1.3em;
+    }
+    .wrap-2 { 
+        position: relative; 
+        width:100%; height: 63px; border-bottom: 1px solid #E0E7EB; text-align: center;
+        .inner { 
+            position: relative; width: 1160px; margin:0 auto;
+            img { width: 977px; float: left; margin-top: 16px;} 
         }
+    }    
+}
+.video-wrap {
+    position: fixed; width:100vw; height: 100%;
+    background-color: rgba(0,0,0,0.9); z-index: 100000;
+    top: 0px; display: none;
+    video{ 
+        position: absolute; margin:auto; width: 80vw;
+        left:0; right:0; top:0; bottom: 0;
     }
 }
 .content-wrap {
     position: relative; width: 100%; min-height: 100vh;
+    .block-0{
+        position: relative; width: 1160px; margin:90px auto 28px auto;
+        display: flex; justify-content: space-between;
+        .card { 
+            width: 368px; height: 476px;
+            @include backImageCover;
+            &.card-1 { background-image:url(../../img/inssa_index/card_big_1.png); }
+            &.card-2 { background-image:url(../../img/inssa_index/card_big_2.png); }
+            &.card-3 { background-image:url(../../img/inssa_index/card_big_3.png); }
+        }
+    }
+    .block-0-1{
+        position: relative; width: 1160px; margin:0 auto 48px auto;
+        display: flex; justify-content: space-between;
+        .map { 
+            width: 764px; height: 556px;
+            img { max-width: 100%;}
+        }
+        .card { 
+            width: 368px;
+            img { max-width: 100%;}
+        }        
+    }
     .block1-wrap{
-        position: relative; width: 100%; max-width: 1160px; margin:94px auto;
+        position: relative; width: 100%; max-width: 1160px; margin:54px auto 120px auto;
         height: 556px; 
         .promo-wrap{
             position: absolute; width: 564px; height: 100%;
@@ -127,28 +164,16 @@ body{
                 } 
             }
         }
-    }
-    .block2-wrap{
-        position: relative; width: 100%; max-width: 1160px; margin:94px auto;
-        border-top:1px solid #E3DBDB; display: flex; justify-content: space-between;
-        .card {
-            width:358px; height: 490px; margin-top: 90px;
-            .thumb-wrap{
-                width:100%; height: 273px; @include backImageCover; background-color: gray;
-                &#thumb-1 { background-image: url(../../img/inssa_index/card_big_thumb_1.png);}
-            }
-            .title {
-                font-family: 'Poppins'; font-size: 30px; margin-top: 24px;
-                font-weight: 600; width: 85%; margin-left: 7%; line-height: 1.1em;
-                color:#375C91;
-            }
-            .detail{
-                line-height: 1.4em; margin-top: 1rem; width: 85%; margin-left: 8%;
-                color:#6B788B;
-            }
+        .card-img{
+            position: absolute; width: 564px; right:0;
+            img { max-width: 100%;}
         }
-        .divide-line { width: 1px; height: 500px; background-color:#E3DBDB; margin-top: 90px; }
     }
+    .divide-line {
+        display: block; position: relative; width: 1160px; height: 1px; background-color:#E3DBDB;
+        margin:0 auto;
+    }
+   
 }
 //---------
 

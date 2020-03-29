@@ -32,44 +32,66 @@
         </div>
         <div class="title">
             <div class="slide" data-slide="1">
-            <div class="title__super">Curisine & Wine</div>
+            <div class="title__super">Night Travel</div>
             <div class="title__big">
-                <span>J</span><span>e</span><span>o</span><span>n</span><span>j</span><span>u</span>
-                <span>M</span><span>a</span><span>k</span><span>g</span><span>e</span><span>o</span><span>l</span><span>l</span><span>i</span>
+                <span>Yeosu</span>
+                <span>Marintime</span>
+                <span>Cable Car</span>
+                <span>at Night</span>
             </div>
             </div>
             <div class="slide" data-slide="2">
-                <div class="title__super">Curisine & Wine</div>
+                <div class="title__super">Street Food</div>
                 <div class="title__big">
-                    <span>J</span><span>e</span><span>o</span><span>n</span><span>j</span><span>u</span>
-                    <span>M</span><span>a</span><span>k</span><span>g</span><span>e</span><span>o</span><span>l</span><span>l</span><span>i</span>
+                    <span>Gwangjang</span>
+                    <span>Market</span>
+                    <span>Street</span>
+                    <span>Foods</span>
+                </div>
+            </div>
+            <div class="slide" data-slide="3">
+                <div class="title__super">Cuisine & Wine</div>
+                <div class="title__big">
+                    <span>Jeonju</span>
+                    <span>Makgeoli</span>
+                    <span>Street</span>
                 </div>
             </div>
         </div>
         <div class="content">
             <div class="slide" data-slide="1">
                 <div class="content__blurb">
-                    It is a Makgeolli house in an alley of Jeonju Market. On a rainy day, 
-                    Koreans think of 'pajeon makgeolli in rice wine'. I'll be waiting.
-                    <p class="sub-title">Location</p>
-                    <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
-                    <p class="sub-title">Curisine & Wine</p>
-                    <p class="desc">Makgeolli, Seafood Pajeon</p>
+                    Yeosu Maritime Cable Car is the first of its kind in Korea, connecting Dolsan Island and the mainland over the ocean. 
+                    Passengers can choose between the standard cabins and crystal cabins.
+                    crystal cabins allow passengers to observe the ocean below ones feet, 
+                    experiencing the thrill of being suspended in mid-air through its transparent flooring.
                     <p class="sub-title">Address</p>
-                    <p class="desc">14 Nambu Market-gil, Jeonju</p>
+                    <p class="desc">3600-1, Dolsan-ro, Yeosu-si, Jeollanam-do</p>
                 </div>
                 
             </div>
             <div class="slide" data-slide="2">
                 <div class="content__blurb">
+                    Gwangjang Market was the first permanent market in Korea and continues to 
+                    thrive as a popular tourist destination today. The second floor of the 
+                    market is filled with silk, satin, and linen bed-sheet stores, 
+                    which are the largest and most famous in Seoul.
+                    
+                    <p class="sub-title">Address</p>
+                    <p class="desc">4, Jong-ro 50-gil, Jongno-gu, Seoul</p>
+                </div>    
+            </div>
+            <div class="slide" data-slide="3">
+                <div class="content__blurb">
                     It is a Makgeolli house in an alley of Jeonju Market. On a rainy day, 
                     Koreans think of 'pajeon makgeolli in rice wine'. I'll be waiting.
                     <p class="sub-title">Location</p>
                     <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
-                    <p class="sub-title">Location</p>
-                    <p class="desc">Nambu market, Jeonju-si, Jeollabuk-do</p>
-                </div>
-                
+                    <p class="sub-title">Cuisine & Wine</p>
+                    <p class="desc">Makgeolli, Seafood Pajeon</p>
+                    <p class="sub-title">Address</p>
+                    <p class="desc">14 Nambu Market-gil, Jeonju</p>
+                </div>    
             </div>
         </div>
         </div>
@@ -77,13 +99,14 @@
         <div class="video">
             <div class="video__left">
             <div class="slide" data-slide="1">
-                <video class="video__one" src="../video/jeonju_final.mp4" muted loop></video>
+                <video class="video__one" src="../video/yeosu_cable.mp4" muted loop></video>
             </div>
             <div class="slide" data-slide="2">
-                <video class="video__one" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/908370/swan.mp4" muted loop></video>
+                <video class="video__one" src="../video/market.mp4" muted loop></video>
             </div>
-            
-            
+            <div class="slide" data-slide="3">
+                <video class="video__one" src="../video/jeonju_final.mp4" muted loop></video>
+            </div>            
         </div>
         <div class="controls">
             <div class="controls__prev"></div>
@@ -95,15 +118,19 @@
 
     <div class="contents-wrap">
         <img src="../img/today/con_1.png">
-        <div class="video-wrap" id="video-1"></div>
+        <span class="divide-line"></span>
         <img src="../img/today/con_2.png">
-        <div class="video-wrap" id="video-2"></div>
+        <div class="video-wrap" id="video-1"></div>
         <img src="../img/today/content_1_1.png">
-        <img src="../img/today/content_1_2.png" class="second">
+        <div class="spacer"></div>
     </div>
 
-</div><!-- wrapper end -->
+    
 
+</div><!-- wrapper end -->
+<div class="video-view-wrap">
+    <video src="../video/today_final.mp4" loop id="ask-video"></video>
+</div>
 <div class="vk-footer"></div>
 
 
@@ -113,10 +140,25 @@
 <script src="../libs/aos/aos.js"></script>
 
 <script>
+
+    $('#video-1').on('click', function(){
+      $('.video-view-wrap').css('display','block');
+      $('#ask-video').get(0).play();
+      $('body').css('overflow-y','hidden');
+      event.preventDefault();
+    });
+    $('.video-view-wrap').on('click', function(){
+      $('.video-view-wrap').css('display','none');
+      $('#ask-video').get(0).pause();
+      $('#ask-video').get(0).currentTime = 0;
+      $('body').css('overflow-y','scroll');
+      event.preventDefault();
+    });
+
     $(document).ready(init());
 
     var active = 0;
-    var count = 2;
+    var count = 3;
 
     function init(){
         $('video')[0].addEventListener('loadeddata', function(){

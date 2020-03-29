@@ -80,7 +80,7 @@ body{ @include variable-font-size(16px); font-family: $serif; }
 }
 .title{
 	width: 72rem; height: 30rem; position: relative; margin-top: 15rem; z-index: 5;
-	color: white; padding: 5rem 0; 
+	color: white; padding: 4rem 0; 
 	&:before{
 		content: ''; position: absolute; top: 0;
 		width: 670px; height: 100%; 
@@ -96,7 +96,7 @@ body{ @include variable-font-size(16px); font-family: $serif; }
 	}
 	&__big{
 		font-family: $sans; font-weight: 700; padding-left: 44px; width:100%;
-		font-size:60px; margin-top: 1rem; line-height: 0.95em;
+		font-size:52px; margin-top: 4px; line-height: 1.0em;
 		span{
 			position: relative; display: inline-block; opacity: 0;
 			transform: translatey(-2rem);
@@ -290,6 +290,11 @@ body{ @include variable-font-size(16px); font-family: $serif; }
 }
 .contents-wrap {
 	width:100%; margin-top: 120px;
+	.divide-line {
+		display: block; width:100%; height: 1px;
+		background-color: #DBDDDF; margin: 70px auto;
+	}
+	.spacer { width:100%; height: 220px;}
 	.video-wrap{
 		width:100%; height: 652px;
 		@include backImageCover; margin: 12rem 0;
@@ -302,9 +307,18 @@ body{ @include variable-font-size(16px); font-family: $serif; }
 	}
     img { 
 		max-width: 100%;
-		&.second {
-			margin: 100px 0;
+		&.final{
+			margin: 0 0 120px 0;
 		} 
 	}
+}
+.video-view-wrap {
+    position: fixed; width:100vw; height: 100%;
+    background-color: rgba(0,0,0,0.9); z-index: 100000;
+    top: 0px; display: none;
+    video{ 
+        position: absolute; margin:auto; width: 80vw;
+        left:0; right:0; top:0; bottom: 0;
+    }
 }
 
