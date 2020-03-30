@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Visit Korea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../libs/styles/common.css" />
+    <link rel="stylesheet" href="../libs/styles/vk_theme_common.css">
+    <link rel="stylesheet" href="../libs/styles/inssa_test.css">
+</head>
+<body>
+
+    <header class="vk-header">
+        <a href="index_inssa.html"></a>
+    </header>
+
+    <iframe id="test-wrap" frameborder="0">
+
+    </iframe>
+
+
+    <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $('#test-wrap').attr('src', './inssa_test/test_1.html');
+        });
+        /*
+        var coverBtn = $('.cover-close');
+        var subTitle = $('.sub-title');
+        coverBtn.on('click', ()=>{
+            $('.hero-cover').css('left','-100vw');
+        });
+        subTitle.on('click', ()=>{
+            $('.hero-cover').css('left','0');
+        });
+        $('.btn-close').on('click', ()=>{
+            $('#spot-info').css('top','100vh');
+            $('.btn-close').css('display','none');
+        }); 
+        */       
+    </script>
+    
+    
+</body>
+</html>

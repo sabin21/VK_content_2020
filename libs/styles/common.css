@@ -130,6 +130,19 @@ body {
   height: 100%;
 }
 
+.vk-header.fixed {
+  position: fixed;
+  background-position: center;
+}
+
+.vk-header.fixed:before {
+  display: none;
+}
+
+.vk-header.fixed:after {
+  display: none;
+}
+
 .vk-footer {
   position: relative;
   width: 100%;
