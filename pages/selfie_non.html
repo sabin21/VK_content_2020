@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Visit Korea</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../libs/styles/common.css" />
+    <link rel="stylesheet" href="../libs/styles/vk_theme_common.css">
+    <link rel="stylesheet" href="../libs/styles/selfie.css">
+    <link rel="stylesheet" href="../libs/aos/aos.css">
+</head>
+<body>
+
+    <header class="vk-header">
+        <a href="index_inssa.html"></a>
+    </header>
+
+    <section class="hero-cover">
+        <div class="hero-wrap">
+            <div class="title-wrap"></div>
+            <div class="hero-right"></div>
+            <div class="title-front">
+                <img src="../img/selfie/hero_title.png">
+            </div>           
+        </div>
+    </section>
+
+    <section class="render-wrap back-3">
+        <div class="click-wrap">
+            <a class="click-btn click-1" href="#spot-1"></a>
+            <a class="click-btn click-2" href="#spot-3"></a>
+            <a class="click-btn click-3" href="#spot-2"></a>
+            <a class="click-btn click-4" href="#spot-4"></a>
+        </div>
+        <div class="title-front">
+            <img src="../img/selfie/render_front.png">
+        </div>
+    </section>
+
+    <section class="spot-wrap" id="spot-1" name="spot-1">        
+        <div class="block-1">            
+            <figure class="pict-wrap">
+                <div class="video-wrap">
+                    <video src="../video/selfie_1.mp4" muted loop autoplay></video>
+                </div>
+            </figure>
+            <div class="text-wrap">
+                <img src="../img/selfie/info_1.png">
+            </div>            
+        </div>
+        <div class="vr-outer">
+            <div class="vr-wrap none" id="viewer-wrap-1">
+
+            </div>
+        </div>        
+    </section>
+
+    <section class="spot-wrap" id="spot-2" name="spot-2">        
+        <div class="block-1">            
+            <figure class="pict-wrap">
+                <div class="video-wrap">
+                    <video src="../video/selfie_2.mp4" muted loop autoplay></video>
+                </div>
+            </figure>
+            <div class="text-wrap">
+                <img src="../img/selfie/info_2.png">
+            </div>            
+        </div>
+        <div class="vr-outer">
+            <div class="vr-wrap none" id="viewer-wrap-2">
+
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="spot-wrap" id="spot-3" name="spot-3">        
+        <div class="block-1">            
+            <figure class="pict-wrap">
+                <div class="video-wrap">
+                    <video src="../video/selfie_3.mp4" muted loop autoplay></video>
+                </div>
+            </figure>
+            <div class="text-wrap">
+                <img src="../img/selfie/info_3.png">
+            </div>            
+        </div>
+        <div class="vr-outer">
+            <div class="vr-wrap none" id="viewer-wrap-3">
+
+            </div>
+        </div>        
+    </section>
+
+    <section class="spot-wrap" id="spot-4" name="spot-4">        
+        <div class="block-1">            
+            <figure class="pict-wrap">
+                <div class="video-wrap">
+                    <video src="../video/selfie_4.mp4" muted loop autoplay></video>
+                </div>
+            </figure>
+            <div class="text-wrap">
+                <img src="../img/selfie/info_4.png">
+            </div>            
+        </div>
+        <div class="vr-outer">
+            <div class="vr-wrap none" id="viewer-wrap-4">
+
+            </div>
+        </div>        
+    </section>
+
+    <div class="page-up-btn">
+        <svg width="24px" height="14px" viewBox="0 0 24 14">            
+            <polyline id="Path" stroke="#F76659" fill="none" stroke-width="2" points="3 12 12 3 21 12"></polyline>            
+        </svg>
+    </div>
+    <script src="../libs/jquery/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).on('scroll', function(){
+                if(window.scrollY < 1400){
+                $(".page-up-btn").css('display','none');
+                }else{
+                    $(".page-up-btn").css('display','block');
+                }
+            });
+            
+            $(".page-up-btn").click(function( event ) {
+                event.preventDefault();
+                $("html, body").animate({ scrollTop: $('.render-wrap').offset().top }, 500);
+            });
+        });
+    </script>
+
+    <script>
+        function scrollToAnchor(aid){
+            var aTag = $("a[name='"+ aid +"']");
+            $('html,body').animate({scrollTop: aTag.offset()},'fast');
+        }
+
+        $(".click-btn.click-1").click(function() {
+            scrollToAnchor('spot-1');
+        });
+        $(".click-btn.click-2").click(function() {
+            scrollToAnchor('spot-3');
+        });
+        $(".click-btn.click-3").click(function() {
+            scrollToAnchor('spot-2');
+        });
+        $(".click-btn.click-4").click(function() {
+            scrollToAnchor('spot-4');
+        });
+        /*
+        var coverBtn = $('.cover-close');
+        var subTitle = $('.sub-title');
+        //coverBtn.on('click', ()=>{
+        //    $('.hero-cover').css('left','-100vw');
+        //});
+        subTitle.on('click', ()=>{
+            $('.hero-cover').css('left','0');
+        });
+        $('.btn-close').on('click', ()=>{
+            $('#spot-info').css('top','100vh');
+            $('.btn-close').css('display','none');
+        }); 
+        */      
+    </script>
+    
+    
+</body>
+</html>

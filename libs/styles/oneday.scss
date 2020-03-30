@@ -33,7 +33,14 @@ canvas {
             left:0; right:0;
             background-color:rgba(255,255,255,0.5);
         }
-    }    
+    }
+    &.none {
+        @include backImageCover; height:100vh; 
+    }   
+}
+.none-hero {
+    position: fixed; top:0; z-index: -3; width:100%; height: 100vh;
+    background-image: url(../../img/mokpo/hero_basic.png);
 }
 
 

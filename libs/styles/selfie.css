@@ -247,6 +247,22 @@
   height: 100vh;
 }
 
+.spot-wrap .vr-outer .vr-wrap.none#viewer-wrap-1 {
+  background-image: url(../../img/selfie/vr_1.jpg);
+}
+
+.spot-wrap .vr-outer .vr-wrap.none#viewer-wrap-2 {
+  background-image: url(../../img/selfie/vr_2.jpg);
+}
+
+.spot-wrap .vr-outer .vr-wrap.none#viewer-wrap-3 {
+  background-image: url(../../img/selfie/vr_3.jpg);
+}
+
+.spot-wrap .vr-outer .vr-wrap.none#viewer-wrap-4 {
+  background-image: url(../../img/selfie/vr_4.jpg);
+}
+
 #spot-info {
   position: absolute;
   width: 100vw;
